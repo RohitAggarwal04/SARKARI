@@ -1,0 +1,50 @@
+.bannerImage img {
+  width: 100%;
+}
+.bannerImage {
+  position: relative;
+}
+.imageSection {
+  position: relative;
+}
+.cardSection,
+.cardSection2 {
+  width: 21rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-top-left-radius: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  padding: 1rem;
+  zindex: 999;
+}
+.cardSection2 {
+  text-align: left;
+  left: 0;
+  bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 20px;
+  background-color: rgba(240, 195, 60, 0.7);
+}
+.imageCard1,
+.imageCard {
+  display: block;
+  width: 100%;
+}
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .imageCard {
+    display: inline-block;
+    width: 49.5%;
+  }
+  .imageCard1 {
+    display: inline-block;
+    width: 50%;
+    margin-right: 0.5%;
+  }
+}

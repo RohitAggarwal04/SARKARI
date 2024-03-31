@@ -1,0 +1,159 @@
+.blueDesign {
+  margin: 0;
+  background-color: rgba(33, 150, 243, 0.2);
+  width: 4rem;
+  height: 8rem;
+}
+
+.contentSection {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.Description {
+  line-height: 1.5; /* Increase line height */
+  color: #595959; /* Set font color to slate gray */
+}
+.subheading {
+  font-size: 20px;
+  margin: 0;
+  word-spacing: 2px;
+  color: #545454;
+}
+.introduction {
+  font-weight: bold; /* You can adjust the weight as needed, for example: bold, bolder, 600, 700, etc. */
+}
+.image {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.servicesPeoplesimg {
+  margin-top: -3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.ServicesContent {
+  color: black;
+  padding: 2rem 0.9rem;
+}
+
+.imageStyle {
+  width: 20rem;
+}
+
+.sectionOurServices {
+  width: auto;
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.colorStyle {
+  background-color: rgba(33, 150, 243, 0.2);
+  height: 4rem;
+}
+
+.ourServicesContent {
+  padding: 2rem 2% 1rem 2rem;
+  background-color: rgba(33, 150, 243, 0.2);
+}
+
+.headingWithLogo {
+  display: flex;
+  margin-left: -1.5rem;
+  align-items: center;
+  gap: 6px;
+}
+
+.startUpTile {
+  background-color: white;
+  padding: 2rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tile {
+  width: 10rem;
+  margin: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  padding-top: 2rem;
+  color: #080808;
+  font-weight: 600;
+  background: rgba(121, 153, 234, 1);
+  border-top-right-radius: 3rem;
+}
+
+.titleImage {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.empowerHeading {
+  font-size: 40px !important;
+  margin: 0;
+  display: block;
+}
+@media (min-width: 768px) {
+  .contentSection {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-left: 0;
+  }
+
+  .servicesPeoplesimg {
+    width: 25rem;
+    display: flex;
+    justify-content: flex-end;
+    max-height: 290px;
+  }
+
+  .ServicesContent {
+    padding: 2rem 0rem 2rem 4rem;
+    max-width: 40rem;
+  }
+
+  .imageStyle {
+    width: 540px;
+  }
+
+  .ourServicesContent {
+    width: 50%;
+    background-color: rgba(33, 150, 243, 0.2);
+    height: fit-content;
+    margin-top: 4rem;
+  }
+
+  .sectionOurServices {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 0;
+  }
+
+  .tile {
+    width: 25%;
+  }
+
+  .colorStyle {
+    background-color: rgba(33, 150, 243, 0.2);
+    width: 9rem;
+    height: 24rem;
+    margin-top: 4rem;
+  }
+  .empowerHeading {
+    display: inline;
+  }
+  .subheading {
+    font-weight: bolder;
+    font-size: 26px;
+    margin: 0;
+    word-spacing: 2px;
+    color: #545454;
+  }
+  .servicesPeoplesimg {
+    margin: 0;
+  }
+}
