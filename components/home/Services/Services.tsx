@@ -27,7 +27,6 @@ export default function Services({ category }) {
     setSelectedTile(tile);
     setIsAnyTileHovered(true);
     clearTimeout(resetTimeout);
-    console.log(selectedTile);
   };
 
   const handleTileLeave = () => {

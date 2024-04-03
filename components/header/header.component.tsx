@@ -14,6 +14,7 @@ import {
   DownOutlined,
   LeftOutlined,
   MenuOutlined,
+  RightOutlined,
 } from "@ant-design/icons";
 export default function Header({ category }) {
   const [items, setItems] = useState([]);
@@ -116,7 +117,7 @@ export default function Header({ category }) {
                         color: serviceIndex === index ? "white" : "black",
                       }}
                     >
-                      <LeftOutlined /> {item.label}
+                      {item.label} <RightOutlined />
                     </div>
                   ))}
                 </div>
