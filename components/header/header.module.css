@@ -4,8 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
+  background: #2ecc71; /* Reduced opacity to 0.1 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +13,43 @@
   padding-left: 10%;
   padding-right: 10%;
 }
+
+.Dropdown {
+  font-family: "FuturaMdBt", sans-serif;
+  padding: 5% 10% 5% 10%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Subcategories {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white; /* Set background color to white */
+  border-radius: 9px;
+  text-decoration: none;
+  color: black;
+  width: calc(100% - 270px);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.Subcategory {
+  width: calc(46%);
+  padding: 10px 2%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  color: black;
+}
+
+.Subcategory:hover {
+  background-color: #f3f3f3;
+  font-weight: 500;
+}
+
 .logoSection {
   display: flex;
   align-items: center;
@@ -31,7 +67,7 @@
   color: rgba(163, 163, 163, 1);
   width: 100%;
   justify-content: flex-end;
-  margin-left: -5%;
+  margin-left: -20%;
 }
 .menuList a {
   cursor: pointer;
@@ -44,7 +80,7 @@
 }
 .contactUsBtn {
   color: white;
-  background: #005d8f;
+  background: #2196f3;
   border-radius: 3rem;
   padding: 5px 24px;
   font-weight: 600;
@@ -78,7 +114,7 @@
   }
   .mobileNav {
     background-color: white;
-    padding: 1rem 18%;
+    padding: 1rem 10%;
     border-radius: 1rem;
     position: absolute;
     top: 50px;

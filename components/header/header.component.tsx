@@ -1,7 +1,9 @@
 "use client";
+import React from "react";
+
 import styles from "./header.module.css";
 import logo from "../../public/assets/logo1.png";
-import { Dropdown, Menu, Space } from "antd";
+import { Dropdown, Menu, Space, message } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -10,32 +12,28 @@ import {
   CaretUpOutlined,
   CloseOutlined,
   DownOutlined,
+  LeftOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
 export default function Header({ category }) {
   const [items, setItems] = useState([]);
   const [openNavigation, setOpenNavigation] = useState(false);
   const [showServices, setShowServices] = useState(true);
+  const [serviceIndex, setServiceIndex] = useState(0);
   useEffect(() => {
     if (category) {
-      const categoryIds = category?.result?.map((category) => ({
-        id: category.id,
-        display_name: category.display_name,
-      }));
-      const formattedItems = [];
-      const promises = categoryIds.map(({ id }) => fetchSubCategories(id));
-      Promise.all(promises)
+      Promise.all(category.result.map(({ id }) => fetchSubCategories(id)))
         .then((subCategoriesArray) => {
-          subCategoriesArray.forEach((subCategories, index) => {
-            formattedItems.push({
-              key: `${index + 1}`,
-              label: ` ${categoryIds[index].display_name}`,
-              children: subCategories.map((subCategory, subIndex) => ({
-                key: `${index + 1}-${subIndex + 1}`,
+          const formattedItems = category.result.map((category, index) => ({
+            key: `${index}`,
+            label: ` ${category.display_name}`,
+            children: subCategoriesArray[index].map(
+              (subCategory, subIndex) => ({
+                key: `${index}-${subIndex}`,
                 label: subCategory.display_name,
-              })),
-            });
-          });
+              })
+            ),
+          }));
           setItems(formattedItems);
         })
         .catch((error) => {
@@ -43,6 +41,7 @@ export default function Header({ category }) {
         });
     }
   }, []);
+
   const fetchSubCategories = async (categoryId) => {
     try {
       const response = await fetch(
@@ -58,11 +57,14 @@ export default function Header({ category }) {
       return [];
     }
   };
+
   return (
     <header
       className={styles.mainHeader}
       style={{
-        background: openNavigation ? "white" : "transparent",
+        background: openNavigation
+          ? "white"
+          : "linear-gradient(to top, rgba(0, 0, 0, 0.1), black)",
         color: openNavigation ? "black" : "inherit",
       }}
     >
@@ -75,21 +77,74 @@ export default function Header({ category }) {
           alt="logo"
           style={{ marginRight: "20px" }}
         />{" "}
-        <p style={{ fontWeight: "500" }}>Sarkari Filing</p>{" "}
+        <p style={{ fontWeight: "500", color: "white", fontSize: "18px" }}>
+          Sarkari Filing
+        </p>{" "}
       </section>
       <section className={styles.menuSection}>
         <div className={styles.menuList}>
           <Link href="/">Home</Link>
-          <Link href="/about-us">About Us</Link>
-          <Dropdown menu={{ items }}>
-            <a onClick={(e) => e.preventDefault()}>
+          <Link href="/about-us">About Us</Link>{" "}
+          <Dropdown
+            menu={{ items }}
+            overlayStyle={{}}
+            placement="bottom"
+            dropdownRender={(menus) => (
+              <div
+                style={{
+                  display: "flex",
+                  maxWidth: "800px",
+                  backgroundColor: "white",
+                  borderRadius: "12px",
+                  width: "fit-content",
+                }}
+              >
+                <div
+                  style={{
+                    width: "270px",
+                    border: "2px solid #2196f3",
+                  }}
+                >
+                  {menus.props.items.map((item, index) => (
+                    <div
+                      onClick={() => setServiceIndex(index)}
+                      className={styles.Dropdown}
+                      key={index}
+                      style={{
+                        backgroundColor:
+                          serviceIndex === index ? "#2196f3" : "white",
+                        color: serviceIndex === index ? "white" : "black",
+                      }}
+                    >
+                      <LeftOutlined /> {item.label}
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/services/${category.result[serviceIndex].id} `}
+                  className={styles.Subcategories}
+                >
+                  {items[serviceIndex]?.children.map((item, index) => (
+                    <p className={styles.Subcategory} key={index}>
+                      {item.label}
+                    </p>
+                  ))}
+                </Link>
+              </div>
+            )}
+          >
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
               <Space>
                 Services <DownOutlined />
               </Space>
             </a>
           </Dropdown>
-          <Link href="/blogs">Blogs</Link>
-        </div>
+        </div>{" "}
       </section>
       <section>
         <button
@@ -122,7 +177,7 @@ export default function Header({ category }) {
                     justifyContent: "space-between",
                     alignItems: "center",
                     width: "100%",
-                    paddingRight: "40%",
+                    paddingRight: "20%",
                     marginTop: "10px",
                     marginBottom: "10px",
                   }}
@@ -136,15 +191,14 @@ export default function Header({ category }) {
                   style={{
                     width: "100%",
                     textAlign: "left",
-                    paddingRight: "38%",
+                    paddingRight: "17%",
                   }}
                   mode="inline"
                   items={items}
                 />
               )}
-              <Link href="/blogs">Blogs</Link>
               <Link
-                href="/contact-us"
+                href="tel:+917892126783"
                 className={styles.contactUsBtn}
                 style={{
                   width: "5rem",
@@ -160,7 +214,7 @@ export default function Header({ category }) {
           )}
         </button>
       </section>{" "}
-      <Link href="/contact-us" className={styles.contactUsBtn}>
+      <Link href="tel:+917892126783" className={styles.contactUsBtn}>
         Contact Us
       </Link>
     </header>

@@ -21,12 +21,15 @@
   font-weight: 600;
   font-size: 16px;
   overflow: hidden;
-  line-height: 1.5; /* Adjust the line height as needed */
+  font-family: "Raleway", sans-serif;
+  line-height: 1.5;
 }
 .description {
   height: 100px; /* Set the desired height */
   overflow: hidden;
   line-height: 1.5; /* Adjust the line height as needed */
+  color: #525252;
+  letter-spacing: 0.25px;
 }
 
 .blogLogoImagesTestimonial {

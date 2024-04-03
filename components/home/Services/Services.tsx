@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import servicesPeoples from "../../../public/assets/servicesGroup.png";
 import rocket from "../../../public/assets/servicesImages/rocket.svg";
 import goodsAndST from "../../../public/assets/servicesImages/desk.svg";
@@ -9,54 +9,46 @@ import pAndFinancial from "../../../public/assets/servicesImages/desk.svg";
 import styles from "./Services.module.css";
 import BoxDesign from "../BoxDesign/BoxDesign";
 import Image from "next/image";
-export default function Services() {
-  const tiles = [
-    {
-      src: rocket.src,
-      description: "Start Up",
-      backgroundColor: "rgba(255, 210, 52, 1)",
-    },
-    {
-      src: goodsAndST.src,
-      description: "Goods And Services Tax",
-      backgroundColor: "rgba(121, 153, 234, 1)",
-    },
-    {
-      src: projectReports.src,
-      description: "Project Reports",
-      backgroundColor: "rgba(121, 153, 234, 1)",
-    },
-    {
-      src: illustration.src,
-      description: "Personal & Finance Coach",
-      backgroundColor: "rgba(121, 153, 234, 1)",
-    },
-    {
-      src: pAndFinancial.src,
-      description: "MCA Compliances",
-      backgroundColor: "rgba(121, 153, 234, 1)",
-    },
-    {
-      src: trademakr.src,
-      description: "Trademarks",
-      backgroundColor: "rgba(121, 153, 234, 1)",
-    },
-  ];
 
+const imageSources = [
+  rocket,
+  goodsAndST,
+  trademakr,
+  illustration,
+  projectReports,
+  pAndFinancial,
+];
+
+export default function Services({ category }) {
+  const [selectedTile, setSelectedTile] = useState(category.result[0]);
+  const [isAnyTileHovered, setIsAnyTileHovered] = useState(false);
+  let resetTimeout;
+  const handleTileHover = (tile) => {
+    setSelectedTile(tile);
+    setIsAnyTileHovered(true);
+    clearTimeout(resetTimeout);
+    console.log(selectedTile);
+  };
+
+  const handleTileLeave = () => {
+    // Set a timeout to reset the tile after a delay
+    resetTimeout = setTimeout(() => {
+      setSelectedTile(category.result[0]);
+      setIsAnyTileHovered(false);
+    }, 1200);
+  };
   return (
     <main className={styles.mainSection}>
       <div className={styles.blueDesign}></div>
-      {/* section contet and image  */}
       <section className={styles.contentSection}>
-        <div className={styles.servicesPeoplesimg}>
-          <Image
-            src={servicesPeoples.src}
-            alt="Office"
-            width={380}
-            height={290}
-            loading="eager"
-          />
-        </div>
+        <Image
+          src={servicesPeoples.src}
+          alt="Office"
+          width={380}
+          height={290}
+          loading="eager"
+          className={styles.servicesPeoplesimg}
+        />
         <section className={styles.ServicesContent}>
           <p className={styles.empowerHeading}>
             Empowering Your Financial Journey:{" "}
@@ -70,9 +62,9 @@ export default function Services() {
             regulatory frameworks, compliance matters, and paperwork can be
             daunting. Enter Sarkari Filing, your beacon in the realm of online
             financial and business support services. This comprehensive guide
-            explores why Sarkari Filing stands out as the unrivalled choice for
+            explores why Sarkari Filing stands out as the unrivaled choice for
             businesses, ensuring a seamless and efficient journey towards
-            financial excellence.
+            financial excellence.{" "}
           </p>
         </section>
       </section>
@@ -82,34 +74,39 @@ export default function Services() {
             <BoxDesign />
             <h3 className={styles.servicesHeading}>Our Services</h3>
           </div>
-          <h4 className={styles.serviceTitle}>Start Up</h4>
+          <h4 className={styles.serviceTitle}>{selectedTile.display_name}</h4>
           <p className={styles.serviceDescription}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur,
-            vero amet. Similique cum architecto reprehenderit quae repellat.
-            Odio deserunt facere in quibusdam consequuntur iusto animi porro
-            nesciunt quos veritatis impedit quasi eveniet autem vel
+            {selectedTile.summary_content}
           </p>
-          <a href="/" className={styles.learnMoreLink}>
+          <a
+            href={`/services/${selectedTile.id}`}
+            className={styles.learnMoreLink}
+          >
             Learn more
           </a>
         </div>
-
         <div className={styles.startUpTile}>
-          {tiles.map((tile, index) => (
+          {category.result.map((tile, index) => (
             <div
               key={index}
-              className={styles.tile}
-              style={{ backgroundColor: tile.backgroundColor }}
+              className={`${styles.tile} ${
+                (!isAnyTileHovered && index === 0) ||
+                (isAnyTileHovered &&
+                  selectedTile.id === category.result[index].id)
+                  ? styles.tileHovered
+                  : ""
+              }`}
+              onClick={() => handleTileHover(tile)}
             >
               <Image
                 width={100}
                 height={100}
-                src={tile.src}
+                src={imageSources[index]}
                 alt={tile.description}
                 className={styles.image}
                 loading="lazy"
               />
-              <p className={styles.tileDescription}>{tile.description}</p>
+              <p className={styles.tileDescription}>{tile.display_name}</p>
             </div>
           ))}
         </div>

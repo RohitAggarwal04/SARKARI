@@ -1,6 +1,21 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../public/fonts/futura/futura.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaBKBt";
+  src: url("../public/fonts/futura/Futura Book font.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaMdBt";
+  src: url("../public/fonts/futura/futura-medium-bt.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaHvBt";
+  src: url("../public/fonts/futura/Futura-Heavy-font.ttf") format("truetype");
+}
+
 :root {
-  /* --max-width: 1100px; */
-  /* --border-radius: 12px; */
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
@@ -39,8 +54,7 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 }
-
 body {
-  margin: 0;
-  font-family: Futura, sans-serif;
+  font-family: "FuturaBKBt", sans-serif; /* Fallback to sans-serif if Futura is unavailable */
+  font-size: 16px;
 }

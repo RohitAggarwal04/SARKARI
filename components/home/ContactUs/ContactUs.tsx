@@ -1,20 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ContactUs.module.css";
 
 export default function ContactUs() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://www.sarkarifiling.com/api/lead/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, message }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Form submitted successfully!");
+        // You can add further logic here, such as displaying a success message or resetting the form
+      } else {
+        console.error("Error submitting form:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+    }
+  };
+
   return (
     <>
       <section id="contact-us" className={styles.contactUsSection}>
         <div className={styles.formSection}>
           <h3 className={styles.heading}>Get In Touch With Us</h3>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email">Email</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 placeholder="Enter your email"
                 className={styles.input}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.inputContainer}>
@@ -23,6 +54,8 @@ export default function ContactUs() {
                 id="message"
                 placeholder="Write here..."
                 className={styles.input}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
             <button className={styles.contactBtnSubmit} type="submit">
@@ -33,14 +66,21 @@ export default function ContactUs() {
 
         <div className={styles.contactInfoMain}>
           <p className={styles.contactUsHeading}>Connect with us</p>
-          <p style={{ fontWeight: "500", fontSize: "18px" }}>
+          <p
+            style={{
+              fontWeight: "500",
+              fontSize: "18px",
+              color: "#3F3F46",
+              fontFamily: "FuturaMdBt",
+            }}
+          >
             At Sarkari Filing For Project Proposal and Other Services
           </p>
           <p className={styles.contactDescription}>
             Choosing Sarkari Filing is not just a transaction; it's an
             investment in the success and growth of your business. With
             unmatched expertise, streamlined processes, and a commitment to
-            excellence , Sarkari Filing stands tall as the premier choice for
+            excellence, Sarkari Filing stands tall as the premier choice for
             businesses seeking unparalleled financial and business support
             services. Embrace a journey of financial empowerment with Sarkari
             Filing, where your success is our mission.

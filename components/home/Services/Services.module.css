@@ -11,17 +11,35 @@
   flex-direction: column;
 }
 .Description {
-  line-height: 1.5; /* Increase line height */
-  color: #595959; /* Set font color to slate gray */
+  line-height: 1.5;
+  color: #595959;
+}
+.tileDescription {
+  font-family: "FuturaMdBt", sans-serif;
+}
+.servicesHeading {
+  font-family: "FuturaMdBt", sans-serif;
+  font-size: 32px;
+}
+.serviceTitle {
+  font-family: "FuturaMdBt", sans-serif;
+  font-size: 24px;
+  color: #3f3f46;
+  margin-top: 0;
+}
+.serviceDescription {
+  color: #3f3f46;
 }
 .subheading {
   font-size: 20px;
   margin: 0;
   word-spacing: 2px;
   color: #545454;
+  font-family: "FuturaHvBt", sans-serif;
 }
 .introduction {
-  font-weight: bold; /* You can adjust the weight as needed, for example: bold, bolder, 600, 700, etc. */
+  font-weight: bold;
+  font-family: "FuturaMdBt", sans-serif;
 }
 .image {
   margin-left: auto;
@@ -31,8 +49,7 @@
 
 .servicesPeoplesimg {
   margin-top: -3rem;
-  display: flex;
-  justify-content: flex-end;
+  align-self: end;
 }
 .ServicesContent {
   color: black;
@@ -79,10 +96,13 @@
   margin: 0.5rem;
   padding: 0.4rem 0.5rem;
   padding-top: 2rem;
-  color: #080808;
+  color: #fff;
   font-weight: 600;
   background: rgba(121, 153, 234, 1);
   border-top-right-radius: 3rem;
+}
+.tileHovered {
+  background-color: #ffd234;
 }
 
 .titleImage {
@@ -90,11 +110,16 @@
   align-items: center;
   flex-direction: column;
 }
-
+.learnMoreLink {
+  color: #2196f3;
+  text-decoration: none;
+}
 .empowerHeading {
   font-size: 40px !important;
   margin: 0;
+  font-family: "FuturaHvBt", sans-serif;
   display: block;
+  color: #1b1919;
 }
 @media (min-width: 768px) {
   .contentSection {
@@ -106,9 +131,8 @@
 
   .servicesPeoplesimg {
     width: 25rem;
-    display: flex;
-    justify-content: flex-end;
     max-height: 290px;
+    margin: 0;
   }
 
   .ServicesContent {
@@ -152,8 +176,5 @@
     margin: 0;
     word-spacing: 2px;
     color: #545454;
-  }
-  .servicesPeoplesimg {
-    margin: 0;
   }
 }

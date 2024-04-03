@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Carousel } from "antd";
 import Image from "next/image";
 import unionBank from "../../../public/assets/customer/1.svg";
@@ -7,8 +7,29 @@ import bpl from "../../../public/assets/customer/3.svg";
 import shashilogo from "../../../public/assets/customer/4.svg";
 import Qoutemark from "../../../public/assets/Quote-mark.svg";
 import styles from "./trustedBy.module.css";
+import user from "../../../public/assets/trustedBy/Rectangle-70.png";
 
 export default function TrustedBy({ testimonials }) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const customDotStyle = {
+    width: "10px",
+    height: "10px",
+    background: "#a6a6a6",
+    marginTop: "5rem",
+  };
+
+  const customActiveDotStyle = {
+    ...customDotStyle,
+    background: "#2196f3",
+  };
+
+  const customPaging = (i) => (
+    <button
+      style={i === currentSlide ? customActiveDotStyle : customDotStyle}
+      onClick={() => setCurrentSlide(i)}
+    />
+  );
+
   return (
     <>
       <section className={styles.logos}>
@@ -48,7 +69,9 @@ export default function TrustedBy({ testimonials }) {
       </section>
       <section className={styles.testimonialSec}>
         <div className={styles.clientTesti}>
-          <h3 className={styles.heading}>Client Testimonial</h3>
+          <h3 className={styles.heading} style={{ color: "white" }}>
+            Client Testimonial
+          </h3>
           <p>
             Sarkari filing works with some of the most dynamic industries across
             India and provides hassle-free services in financial aspects, be it
@@ -57,11 +80,21 @@ export default function TrustedBy({ testimonials }) {
         </div>
         <div className={styles.CardProfileContainer}>
           <div className={styles.CardProfile}>
-            <Carousel autoplay>
+            <Carousel
+              pauseOnDotsHover={true}
+              autoplay={true}
+              swipeToSlide={true}
+              draggable
+              customPaging={customPaging}
+              afterChange={(index) => setCurrentSlide(index)}
+            >
               {testimonials?.result?.map((item, index) => (
                 <div
                   key={index}
-                  style={{ position: "relative", width: "20rem" }}
+                  style={{
+                    position: "relative",
+                    width: "20rem",
+                  }}
                   className="CardProfile"
                 >
                   <span
@@ -74,19 +107,32 @@ export default function TrustedBy({ testimonials }) {
                     {" "}
                     <Image
                       src={Qoutemark}
-                      alt="qoute-mark"
+                      alt="quote-mark"
                       width={18}
                       height={18}
                     />
-                    <p style={{ margin: 0, fontWeight: 500, fontSize: "16px" }}>
+                    <p
+                      style={{
+                        margin: 0,
+                        color: "#111827",
+                      }}
+                    >
                       {item.display_text}
                     </p>
                   </span>
-
-                  <p className={styles.profileImgeSec}>~{item.owner}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      marginTop: "2.7rem",
+                      gap: "10px",
+                    }}
+                  >
+                    <Image src={user} width={50} height={50} alt="user" />
+                    <p className={styles.profileImgeSec}>~{item.owner}</p>
+                  </div>
                 </div>
               ))}
-            </Carousel>
+            </Carousel>{" "}
           </div>
         </div>
       </section>

@@ -47,7 +47,7 @@ export default function Proposal() {
             prepared it, then you can still take advice from project report
             consultants on how you can best improve the service.
           </p>
-          <Link href="/" className={styles.buttonLearnMore}>
+          <Link href="/services/4" className={styles.buttonLearnMore}>
             Learn More
           </Link>
         </div>

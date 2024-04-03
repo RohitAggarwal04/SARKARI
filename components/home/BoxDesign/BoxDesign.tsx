@@ -1,8 +1,7 @@
 const BoxDesign = () => {
   const boxStyle = {
-    width: "15px",
-    height: "10px",
-    border: "1px solid black",
+    width: "16px",
+    height: "8px",
     backgroundColor: "rgba(33, 150, 243, 1)",
     display: "block",
   };

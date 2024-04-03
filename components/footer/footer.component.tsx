@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./footer.module.css";
 import mainLogo from "../../public/assets/logo1.png";
 import Image from "next/image";
@@ -11,6 +11,31 @@ import {
 } from "@ant-design/icons";
 
 function FooterComponent({ category }) {
+  const [email, setEmail] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://www.sarkarifiling.com/api/lead/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Form submitted successfully!");
+      } else {
+        console.error("Error submitting form:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error.message);
+    }
+  };
   return (
     <>
       <footer className={styles.footer}>
@@ -31,13 +56,15 @@ function FooterComponent({ category }) {
             <section style={{ width: "100%" }}>
               <p>Want to talk with us</p>
               <div className={styles.footerInputContainer}>
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  placeholder="Enter Your Email here"
-                  className={styles.footerInput}
-                />
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter Your Email here"
+                    className={styles.footerInput}
+                  />{" "}
+                </form>
                 <RightCircleFilled className={styles.footerIcon} />
               </div>
             </section>
@@ -45,7 +72,7 @@ function FooterComponent({ category }) {
           <div className={styles.sectionLinkSer}>
             <div style={{ listStyle: "none", width: "10rem" }}>
               <div>
-                <h4>Quick Links</h4>
+                <h4 style={{ fontFamily: "FuturaMdBt" }}>Quick Links</h4>
               </div>
               <div>
                 <p>Home</p>
@@ -57,7 +84,7 @@ function FooterComponent({ category }) {
             </div>
             <div style={{ listStyle: "none" }}>
               <div>
-                <h4>Services</h4>
+                <h4 style={{ fontFamily: "FuturaMdBt" }}>Services</h4>
               </div>
               <div>
                 {category?.result?.map((item) => (
@@ -68,7 +95,7 @@ function FooterComponent({ category }) {
           </div>
           <div style={{ listStyle: "none" }}>
             <div>
-              <h4>Get In Touch</h4>
+              <h4 style={{ fontFamily: "FuturaMdBt" }}>Get In Touch</h4>
             </div>
             <div>
               <p>Contact Us</p>

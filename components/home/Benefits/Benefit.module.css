@@ -22,15 +22,21 @@
   width: 10rem;
 }
 
-.benefitsTiles p:first-child {
-  width: 7rem;
-  font-weight: 500;
+.heading {
+  font-size: 32px; /* Adjust the font size to match the "xl" size */
+  font-weight: 700;
+  color: #3f3f46;
+  font-family: "FuturaMdBt", sans-serif;
 }
-
-.benefitsTiles p:nth-child(2) {
-  width: 9rem;
+.tileTitle {
+  color: #1b1919;
+  font-family: "FuturaMdBt", sans-serif;
+  font-size: 20px;
 }
-
+.tileDescription {
+  font-family: "FuturaBkBt", sans-serif;
+  color: #3f3f46;
+}
 @media (min-width: 768px) {
   .BenefitsMainSection {
     display: flex;
@@ -53,14 +59,5 @@
   .tileSection {
     display: flex;
     gap: 1rem;
-  }
-
-  .benefitsTiles p:first-child {
-    width: 9rem;
-    font-weight: 500;
-  }
-
-  .benefitsTiles p:nth-child(2) {
-    width: 16em;
   }
 }

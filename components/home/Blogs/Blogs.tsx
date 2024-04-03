@@ -45,7 +45,12 @@ export default function Blogs({ blogs }) {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <p style={{ fontFamily: "Raleway" }}>
+                    <p
+                      style={{
+                        fontFamily: "Raleway,sans-serif",
+                        color: "#121316",
+                      }}
+                    >
                       {formatDate(item.created_on)}
                     </p>
 

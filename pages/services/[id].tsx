@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Col, Row, Tabs } from "antd";
 import { useRouter } from "next/navigation";

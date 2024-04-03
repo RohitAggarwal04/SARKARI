@@ -1,7 +1,6 @@
 .proposalMainSection {
   position: relative;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,13 +8,18 @@
   margin-bottom: 4rem;
 }
 
-/* background: rgba(243, 243, 243, 1); */
+.proposalTitle {
+  font-size: 2.25rem; /* Adjust the font size to match the "xl" size */
+  font-family: "FuturaHvBt", sans-serif;
+  font-size: 36px;
+  color: #1b1919;
+}
 
 .borderLeft {
   position: absolute;
   top: 0;
   left: 0;
-  width: 6rem;
+  width: 4rem;
   height: 20rem;
   background: linear-gradient(rgba(243, 243, 243, 1), rgba(243, 243, 243, 1));
   background-clip: content-box;
@@ -36,6 +40,7 @@
   padding: 5px 30px;
   border: none;
   border-radius: 2rem;
+  color: white;
 }
 
 .proposalContent {
@@ -46,7 +51,7 @@
 }
 .proposalDescription {
   line-height: 1.5; /* Increase line height */
-  color: #545454; /* Set font color to slate gray */
+  color: #3f3f46; /* Set font color to slate gray */
 }
 .proposalPeopleImg {
   margin-top: -20rem;

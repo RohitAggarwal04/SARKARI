@@ -1,73 +1,98 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import { Carousel } from "antd";
 import styles from "./Banner.module.css";
 import Image from "next/image";
+import BoxDesign from "../BoxDesign/BoxDesign";
 
-const banners = [
-  {
-    title: "Project Report",
-    url: "projectreport_bnr",
-    description: "Description for Project Report",
-  },
-  {
-    title: "Personal Finance Coach",
-    url: "personalfinancecoach_bnr",
-    description: "Description for Personal Finance Coach",
-  },
-  { title: "MCA", url: "mca_bnr", description: "Description for MCA" },
-  {
-    title: "Trademark",
-    url: "trademark_bnr",
-    description: "Description for Trademark",
-  },
-  {
-    title: "Startup",
-    url: "startup_bnr",
-    description: "Description for Startup",
-  },
-  { title: "GST", url: "gst_bnr", description: "Description for GST" },
-];
+const BannerItem = ({
+  bannerIndex,
+  className,
+  subClassName,
+  cardNum,
+  description,
+  title,
+  imgUrl,
+  id,
+}) => {
+  return (
+    <div className={className}>
+      <Image
+        src={imgUrl}
+        alt={`Slide ${bannerIndex}`}
+        layout="responsive"
+        height={100}
+        width={100}
+        priority
+      />
 
-const BannerItem = ({ bannerIndex, className, subClassName }) => (
-  <div className={className}>
-    <Image
-      src={`https://sarkarifiling-assets.s3.ap-south-1.amazonaws.com/images/${banners[bannerIndex].url}.svg`}
-      alt={`Slide ${bannerIndex}`}
-      layout="responsive"
-      width={100}
-      height={100}
-      priority={bannerIndex < 2}
-      objectFit="contain"
-      loading={bannerIndex < 2 ? "eager" : "lazy"}
-    />
-    <div className={styles.imageSection}>
-      <div className={subClassName}>
-        <p className={styles.cardTitle}>{banners[bannerIndex].title}</p>
-        <p className={styles.cardDescription}>
-          {banners[bannerIndex].description}
-        </p>
-        <a href="/" className={styles.learnMoreLink}>
-          Learn more
-        </a>
+      <div className={styles.imageSection}>
+        <div className={subClassName}>
+          {" "}
+          <div
+            className={styles.cardTitle}
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: cardNum === 1 ? "flex-end" : "flex-start",
+              gap: "1rem",
+            }}
+          >
+            {cardNum === 1 && (
+              <div style={{ transform: "scaleX(-1)" }}>
+                <BoxDesign />
+              </div>
+            )}
+            {title}
+            {cardNum !== 1 && (
+              <div>
+                <BoxDesign />
+              </div>
+            )}
+          </div>
+          <p className={styles.cardDescription}>{description}</p>
+          <a href={`/services/${id}`} className={styles.learnMoreLink}>
+            Learn more
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default function Banner() {
+export default function Banner({ category, banner }) {
+  const slides = [0, 2, 4];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <Carousel autoplay>
-      {[0, 2, 4].map((startIndex, index) => (
-        <div key={index}>
+    <Carousel autoplay autoplaySpeed={5000} infinite>
+      {slides.map((i, index) => (
+        <div key={currentIndex}>
           <BannerItem
-            bannerIndex={startIndex}
+            bannerIndex={slides[index]}
             className={styles.imageCard1}
             subClassName={styles.cardSection}
+            cardNum={1}
+            description={banner.result[i].description}
+            title={banner.result[i].title}
+            imgUrl={banner.result[i].url}
+            id={category.result[i].id}
           />
           <BannerItem
-            bannerIndex={startIndex + 1}
+            bannerIndex={slides[index] + 1}
             className={styles.imageCard}
             subClassName={styles.cardSection2}
+            cardNum={2}
+            description={banner.result[i + 1].description}
+            title={banner.result[i + 1].title}
+            imgUrl={banner.result[i + 1].url}
+            id={category.result[i + 1].id}
           />
         </div>
       ))}

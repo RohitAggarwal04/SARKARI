@@ -9,7 +9,7 @@
 }
 .cardSection,
 .cardSection2 {
-  width: 21rem;
+  width: 22rem;
   background-color: rgba(255, 255, 255, 0.7);
   border-top-left-radius: 20px;
   position: absolute;
@@ -33,10 +33,15 @@
   width: 100%;
 }
 .cardTitle {
-  font-size: 18px;
+  font-size: 26px;
   font-weight: bold;
+  color: #1b1919;
+  font-family: "FuturaMdBt", sans-serif;
+  white-space: nowrap;
 }
-
+.cardDescription {
+  fontfamily: "FuturaBKBt,sans-serif";
+}
 @media (min-width: 768px) {
   .imageCard {
     display: inline-block;
