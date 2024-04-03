@@ -3,14 +3,19 @@
   flex-direction: column;
   margin-top: 2rem;
 }
-
+.testimonialsMainsection {
+  margin-top: 5rem;
+}
 .contentBox {
   margin: 2rem;
 }
 .serviceDetails {
   gap: 0px;
 }
-
+.Image {
+  width: 80%;
+  height: 300px;
+}
 .buildingHeading {
   font-size: 2em;
 }
@@ -69,7 +74,7 @@
     display: flex;
     padding-left: 0em;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .imgClass2 {
@@ -77,8 +82,8 @@
   }
 
   .contentBox {
-    margin: 2rem 10px 2rem 5%;
-    width: 44rem;
+    margin: 2rem 100px 2rem 3%;
+    width: 36rem;
     font-size: 17px;
   }
 
@@ -123,5 +128,10 @@
     column-gap: 10em;
     max-width: 55em;
     padding-top: 2rem;
+  }
+  .Image {
+    width: 651px;
+    height: 500px;
+    align-self: flex-start;
   }
 }

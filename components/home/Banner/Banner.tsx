@@ -27,7 +27,15 @@ const BannerItem = ({
       />
 
       <div className={styles.imageSection}>
-        <div className={subClassName}>
+        <div
+          className={subClassName}
+          style={{
+            backgroundColor:
+              cardNum === 2
+                ? "rgba(240, 195, 60, 0.60)"
+                : "rgba(255, 255, 255, 0.7)",
+          }}
+        >
           {" "}
           <div
             className={styles.cardTitle}
@@ -39,13 +47,13 @@ const BannerItem = ({
             }}
           >
             {cardNum === 1 && (
-              <div style={{ transform: "scaleX(-1)" }}>
+              <div style={{ transform: "scaleX(-1)", marginBottom: "10px" }}>
                 <BoxDesign />
               </div>
             )}
             {title}
             {cardNum !== 1 && (
-              <div>
+              <div style={{ marginBottom: "10px" }}>
                 <BoxDesign />
               </div>
             )}
@@ -62,6 +70,7 @@ const BannerItem = ({
 
 export default function Banner({ category, banner }) {
   const slides = [0, 2, 4];
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,8 +79,32 @@ export default function Banner({ category, banner }) {
 
     return () => clearInterval(interval);
   }, []);
+  const customDotStyle = {
+    width: "14px",
+    height: "7px",
+    background: "#3F3F46",
+    borderRadius: "2px",
+    margin: "0",
+  };
+
+  const customActiveDotStyle = {
+    ...customDotStyle,
+    background: "#2196f3",
+  };
+  const customPaging = (i) => (
+    <button
+      style={i === currentSlide ? customActiveDotStyle : customDotStyle}
+      onClick={() => setCurrentSlide(i)}
+    />
+  );
   return (
-    <Carousel autoplay autoplaySpeed={5000} infinite>
+    <Carousel
+      customPaging={customPaging}
+      autoplay
+      autoplaySpeed={5000}
+      infinite
+      afterChange={(index) => setCurrentSlide(index)}
+    >
       {slides.map((i, index) => (
         <div key={currentIndex}>
           <BannerItem

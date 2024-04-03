@@ -1,9 +1,16 @@
 .footer {
-  background: linear-gradient(168.82deg, #2175a4 -3.26%, #2054a4 98.95%);
+  background: linear-gradient(to bottom, #2175a4, #2054a4);
+
   width: 100%;
   color: white;
 }
-
+.link a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 18px 0;
+}
 .mainFooter {
   display: flex;
   justify-content: space-evenly;
@@ -56,7 +63,9 @@
   column-gap: 2rem;
   margin-top: 3rem;
 }
-
+.getInTouch {
+  margin-top: -7rem;
+}
 @media (max-width: 768px) {
   .conditionSection {
     display: none;
@@ -87,6 +96,9 @@
   .sectionLinkSer {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+  }
+  .getInTouch {
+    margin-top: 0;
   }
 }

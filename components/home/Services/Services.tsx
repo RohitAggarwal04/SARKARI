@@ -28,27 +28,45 @@ export default function Services({ category }) {
     setIsAnyTileHovered(true);
     clearTimeout(resetTimeout);
   };
-
-  const handleTileLeave = () => {
-    // Set a timeout to reset the tile after a delay
-    resetTimeout = setTimeout(() => {
-      setSelectedTile(category.result[0]);
-      setIsAnyTileHovered(false);
-    }, 1200);
+  const boxStyle = {
+    width: "16px",
+    height: "8px",
+    backgroundColor: "#E5E5E5",
+    display: "block",
+    opacity: "20%",
   };
+
+  const boxWithMarginStyle = {
+    ...boxStyle,
+    marginLeft: "0",
+    marginTop: "10px",
+  };
+
   return (
     <main className={styles.mainSection}>
       <div className={styles.blueDesign}></div>
       <section className={styles.contentSection}>
-        <Image
-          src={servicesPeoples.src}
-          alt="Office"
-          width={380}
-          height={290}
-          loading="eager"
-          className={styles.servicesPeoplesimg}
-        />
-        <section className={styles.ServicesContent}>
+        <div
+          className={styles.Image}
+          style={{ position: "relative", marginTop: "80px" }}
+        >
+          <Image
+            src={servicesPeoples.src}
+            alt="Office"
+            layout="fill"
+            loading="eager"
+            style={{
+              objectFit: "cover",
+              borderTopLeftRadius: "42px",
+              borderBottomLeftRadius: "12px",
+            }}
+          />
+        </div>
+
+        <section
+          className={styles.ServicesContent}
+          style={{ marginTop: "80px" }}
+        >
           <p className={styles.empowerHeading}>
             Empowering Your Financial Journey:{" "}
           </p>
@@ -56,7 +74,7 @@ export default function Services({ category }) {
             Unveiling the Unmatched Excellence of Sarkari Filing
           </span>
           <p className={styles.introduction}>Introduction</p>
-          <p className={styles.Description}>
+          <p className={styles.serviceDescription}>
             In the fast-paced world of business and finance, navigating through
             regulatory frameworks, compliance matters, and paperwork can be
             daunting. Enter Sarkari Filing, your beacon in the realm of online
@@ -74,12 +92,13 @@ export default function Services({ category }) {
             <h3 className={styles.servicesHeading}>Our Services</h3>
           </div>
           <h4 className={styles.serviceTitle}>{selectedTile.display_name}</h4>
-          <p className={styles.serviceDescription}>
+          <p className={styles.serviceDescription} style={{ marginLeft: "2%" }}>
             {selectedTile.summary_content}
           </p>
           <a
             href={`/services/${selectedTile.id}`}
             className={styles.learnMoreLink}
+            style={{ marginLeft: "2%" }}
           >
             Learn more
           </a>
@@ -98,14 +117,31 @@ export default function Services({ category }) {
               onClick={() => handleTileHover(tile)}
             >
               <Image
-                width={100}
+                width={155}
                 height={100}
                 src={imageSources[index]}
                 alt={tile.description}
                 className={styles.image}
+                style={{ marginLeft: "10%" }}
                 loading="lazy"
               />
-              <p className={styles.tileDescription}>{tile.display_name}</p>
+              <div
+                style={{
+                  display: "flex",
+                  marginLeft: "10px",
+                  marginBottom: "0",
+                }}
+              >
+                <div style={boxWithMarginStyle}></div>{" "}
+                {/* This div has a margin from the left */}
+                <div style={boxStyle}></div>
+              </div>
+              <p
+                className={styles.tileDescription}
+                style={{ marginLeft: "10px" }}
+              >
+                {tile.display_name}
+              </p>
             </div>
           ))}
         </div>

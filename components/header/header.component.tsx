@@ -3,7 +3,7 @@ import React from "react";
 
 import styles from "./header.module.css";
 import logo from "../../public/assets/logo1.png";
-import { Dropdown, Menu, Space, message } from "antd";
+import { Dropdown, Menu, Space } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -12,15 +12,41 @@ import {
   CaretUpOutlined,
   CloseOutlined,
   DownOutlined,
-  LeftOutlined,
   MenuOutlined,
   RightOutlined,
 } from "@ant-design/icons";
-export default function Header({ category }) {
+
+export default function Header(props) {
+  const { category } = props;
   const [items, setItems] = useState([]);
   const [openNavigation, setOpenNavigation] = useState(false);
   const [showServices, setShowServices] = useState(true);
   const [serviceIndex, setServiceIndex] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const mainHeader = document.querySelector(
+        `.${styles.mainHeader}`
+      ) as HTMLElement;
+      if (openNavigation) mainHeader.style.background = "white";
+      if (window.scrollY > 100) {
+        mainHeader.style.background = "white";
+        setHasScrolled(true);
+      } else {
+        mainHeader.style.background = "rgba(0, 0, 0, 0.5)";
+        setHasScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     if (category) {
       Promise.all(category.result.map(({ id }) => fetchSubCategories(id)))
@@ -46,12 +72,15 @@ export default function Header({ category }) {
   const fetchSubCategories = async (categoryId) => {
     try {
       const response = await fetch(
-        `https://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
+        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
       );
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+
       const subCategories = await response.json();
+
       return subCategories.result;
     } catch (error) {
       console.error("Error fetching sub-categories:", error);
@@ -63,9 +92,7 @@ export default function Header({ category }) {
     <header
       className={styles.mainHeader}
       style={{
-        background: openNavigation
-          ? "white"
-          : "linear-gradient(to top, rgba(0, 0, 0, 0.1), black)",
+        background: openNavigation ? "white" : "rgba(0, 0, 0, 0.1)",
         color: openNavigation ? "black" : "inherit",
       }}
     >
@@ -78,7 +105,13 @@ export default function Header({ category }) {
           alt="logo"
           style={{ marginRight: "20px" }}
         />{" "}
-        <p style={{ fontWeight: "500", color: "white", fontSize: "18px" }}>
+        <p
+          style={{
+            fontWeight: "500",
+            fontSize: "18px",
+            color: hasScrolled || openNavigation ? "#2196F3" : "white",
+          }}
+        >
           Sarkari Filing
         </p>{" "}
       </section>
@@ -98,6 +131,7 @@ export default function Header({ category }) {
                   backgroundColor: "white",
                   borderRadius: "12px",
                   width: "fit-content",
+                  marginTop: "20px",
                 }}
               >
                 <div
@@ -198,17 +232,7 @@ export default function Header({ category }) {
                   items={items}
                 />
               )}
-              <Link
-                href="tel:+917892126783"
-                className={styles.contactUsBtn}
-                style={{
-                  width: "5rem",
-                  display: "block",
-                  fontSize: "14px",
-                  color: "white",
-                  fontWeight: "400",
-                }}
-              >
+              <Link href="tel:+917892126783" className={styles.contactUsBtn}>
                 Contact Us
               </Link>
             </div>

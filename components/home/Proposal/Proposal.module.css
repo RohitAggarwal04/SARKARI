@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 6rem;
+  margin-top: 3rem;
   margin-bottom: 4rem;
 }
 
@@ -36,11 +36,13 @@
 }
 
 .buttonLearnMore {
-  background: rgba(148, 178, 215, 1);
-  padding: 5px 30px;
+  background: #94b2d7;
+  padding: 8px 45px;
   border: none;
-  border-radius: 2rem;
+  border-radius: 24px;
   color: white;
+  width: 80px;
+  cursor: pointer;
 }
 
 .proposalContent {
@@ -53,11 +55,15 @@
   line-height: 1.5; /* Increase line height */
   color: #3f3f46; /* Set font color to slate gray */
 }
-.proposalPeopleImg {
-  margin-top: -20rem;
-}
 
-@media (min-width: 868px) {
+.Image {
+  width: 80%;
+  height: 300px;
+  position: relative;
+  align-self: flex-end;
+  margin-top: -14rem;
+}
+@media (min-width: 768px) {
   .mainContent {
     width: calc(100% - 6rem);
     display: flex;
@@ -68,13 +74,19 @@
     align-items: center;
   }
 
-  .propasalPeopleImg {
-    width: 480px;
-    margin-top: 2rem;
+  .Image {
+    width: 544px;
+    margin-top: 4rem;
+    align-self: flex-start;
+    min-width: 350px;
+    height: 389px;
   }
 
   .proposalContent {
     width: 45rem;
+    padding-top: 0;
+
+    margin-left: -5%;
   }
 
   .mainContent {
@@ -83,5 +95,6 @@
 
   .proposalPeopleImg {
     margin-top: 0;
+    width: 30%;
   }
 }

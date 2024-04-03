@@ -1,22 +1,32 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import proposalImage from "../../../public/assets/proposalImages/proposal.png";
 import styles from "./Proposal.module.css";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Proposal() {
+  const [showFull, setShowFull] = useState(false);
   return (
-    <main className={styles.proposalMainSection}>
+    <main
+      className={styles.proposalMainSection}
+      style={{ overflowX: "hidden" }}
+    >
       <div className={styles.borderLeft} />
       <div className={styles.mainContent}>
-        <Image
-          width={380}
-          height={290}
-          loading="lazy"
-          src={proposalImage}
-          alt="Image"
-          className={styles.proposalPeopleImg}
-        />
+        <div className={styles.Image} style={{ position: "relative" }}>
+          <Image
+            layout="fill"
+            loading="lazy"
+            src={proposalImage}
+            alt="Image"
+            style={{
+              objectFit: "contain",
+              borderTopLeftRadius: "42px",
+              borderBottomLeftRadius: "12px",
+              marginTop: "-4.5%",
+            }}
+          />
+        </div>
 
         <div className={styles.proposalContent}>
           <p className={styles.proposalTitle}>
@@ -35,21 +45,28 @@ export default function Proposal() {
             to new heights. Getting your project report made through us is the
             best way to get it right.
           </p>{" "}
-          <p className={styles.proposalDescription}>
-            Project reports have to tick a number of items in an imaginary
-            checklist like it should be compelling, brief, exhaustive, etc. That
-            is why getting them made by professionals is only prepared by the
-            best experts and after a thorough study of both the proposed
-            business and the industry it will target.
-          </p>{" "}
-          <p className={styles.proposalDescription}>
-            If you have your own ideas about the project report or have already
-            prepared it, then you can still take advice from project report
-            consultants on how you can best improve the service.
-          </p>
-          <Link href="/services/4" className={styles.buttonLearnMore}>
+          {showFull && (
+            <>
+              <p className={styles.proposalDescription}>
+                Project reports have to tick a number of items in an imaginary
+                checklist like it should be compelling, brief, exhaustive, etc.
+                That is why getting them made by professionals is only prepared
+                by the best experts and after a thorough study of both the
+                proposed business and the industry it will target.
+              </p>{" "}
+              <p className={styles.proposalDescription}>
+                If you have your own ideas about the project report or have
+                already prepared it, then you can still take advice from project
+                report consultants on how you can best improve the service.
+              </p>{" "}
+            </>
+          )}
+          <p
+            onClick={() => setShowFull(!showFull)}
+            className={styles.buttonLearnMore}
+          >
             Learn More
-          </Link>
+          </p>
         </div>
       </div>
     </main>

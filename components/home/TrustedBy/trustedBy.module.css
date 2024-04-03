@@ -5,6 +5,8 @@
 
 .logoHeading {
   text-align: center;
+  width: 100%;
+  padding: 1rem 20%;
 }
 .heading {
   font-size: 32px;
@@ -14,36 +16,24 @@
 .logoImagesTestimonial {
   display: flex;
   flex-wrap: wrap;
-  max-width: 19rem;
-  column-gap: 0rem;
-  gap: 2rem;
   justify-content: space-between;
 }
 
-.clientTesti {
-  color: white;
-}
-
 .profileImgeSec {
-  /* Increase font size and make it bold */
-  font-size: 18px; /* Adjust font size as needed */
+  font-size: 18px;
   font-weight: 500;
 }
 
 .clientTesti {
-  width: 27rem;
+  width: 100%;
+  color: white;
 }
 
 .testimonialSec {
-  margin-top: 2rem;
   width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(33, 117, 164, 1) 50%,
-    rgba(255, 255, 255, 1) 50%
-  );
   padding: 5%;
   gap: 5%;
+  background: linear-gradient(rgba(33, 117, 164, 1), rgba(32, 84, 164, 1));
 }
 .CardProfileContainer {
   width: 10%;
@@ -71,23 +61,23 @@
   .logoImagesTestimonial {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 10em;
-    max-width: 55em;
-    padding: 2rem;
+    width: 100%;
+
+    align-items: center;
   }
 
   .testimonialSec {
     margin-top: 2rem;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 5em 0rem;
     background: linear-gradient(
       to right,
       rgba(33, 117, 164, 1) 50%,
       rgba(255, 255, 255, 1) 50%
     );
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    padding: 5em 0rem;
   }
 
   .clientTesti {

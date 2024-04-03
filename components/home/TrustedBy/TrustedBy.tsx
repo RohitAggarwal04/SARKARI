@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Carousel } from "antd";
 import Image from "next/image";
-import unionBank from "../../../public/assets/customer/1.svg";
-import CanraBank from "../../../public/assets/customer/2.svg";
-import bpl from "../../../public/assets/customer/3.svg";
+import unionBank from "../../../public/assets/customer/1.png";
+import CanraBank from "../../../public/assets/customer/2.png";
+import bpl from "../../../public/assets/customer/3.png";
 import shashilogo from "../../../public/assets/customer/4.svg";
+import Scgb from "../../../public/assets/customer/5.png";
 import Qoutemark from "../../../public/assets/Quote-mark.svg";
 import styles from "./trustedBy.module.css";
 import user from "../../../public/assets/trustedBy/Rectangle-70.png";
@@ -40,13 +41,13 @@ export default function TrustedBy({ testimonials }) {
               src={shashilogo.src}
               alt="Shashi logo"
               width={100}
-              height={50}
+              height={90}
               loading="lazy"
             />
             <Image
               src={unionBank.src}
               alt="Union Bank"
-              width={100}
+              width={120}
               height={50}
               loading="lazy"
             />
@@ -60,8 +61,15 @@ export default function TrustedBy({ testimonials }) {
             <Image
               src={bpl.src}
               alt="BPL"
-              width={100}
-              height={50}
+              width={90}
+              height={90}
+              loading="lazy"
+            />
+            <Image
+              src={Scgb.src}
+              alt="Shashi logo"
+              width={140}
+              height={100}
               loading="lazy"
             />
           </div>

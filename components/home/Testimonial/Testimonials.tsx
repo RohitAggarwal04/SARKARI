@@ -1,6 +1,6 @@
 import React from "react";
-import highRisebuilding from "../../../public/assets/testimonial/highRiseBuilding.svg";
-import groupOfOffice from "../../../public/assets/testimonial/peopleInoffice.svg";
+import highRisebuilding from "../../../public/assets/testimonial/highRiseBuilding.png";
+import groupOfOffice from "../../../public/assets/testimonial/peopleInoffice.png";
 import BoxDesign from "../BoxDesign/BoxDesign";
 import styles from "./Testimonial.module.css";
 import Image from "next/image";
@@ -35,17 +35,19 @@ export default function Testimonials() {
   return (
     <main className={styles.testimonialsMainsection}>
       <section className={styles.officePublic}>
-        <div style={{ marginTop: "5rem" }}>
+        <div
+          style={{ marginTop: "0", position: "relative" }}
+          className={styles.Image}
+        >
           <Image
-            width={400}
-            height={300}
+            layout="fill"
             loading="lazy"
             src={groupOfOffice.src}
             alt="Office"
             style={{
               objectFit: "cover",
-              borderTopRightRadius: "22px",
-              borderBottomRightRadius: "22px",
+              borderTopRightRadius: "42px",
+              borderBottomRightRadius: "12px",
             }}
           />
         </div>
@@ -85,7 +87,13 @@ export default function Testimonials() {
                 <span className={styles.checkmark}>
                   <CheckOutlined />
                 </span>
-                <span style={{ letterSpacing: "0.5px", color: "#191A15" }}>
+                <span
+                  style={{
+                    letterSpacing: "0.5px",
+                    color: "#191A15",
+                    fontSize: "14px",
+                  }}
+                >
                   {item}
                 </span>
               </div>
@@ -94,21 +102,21 @@ export default function Testimonials() {
         </div>
         <div
           style={{
-            marginTop: "5rem",
-            display: "flex",
-            justifyContent: "flex-end",
+            marginTop: "1rem",
+            position: "relative",
+            alignSelf: "flex-end",
           }}
+          className={styles.Image}
         >
           <Image
-            width={400}
-            height={300}
+            layout="fill"
             loading="lazy"
             src={highRisebuilding}
             alt="Office"
             style={{
               objectFit: "cover",
-              borderTopLeftRadius: "22px",
-              borderBottomLeftRadius: "22px",
+              borderTopLeftRadius: "42px",
+              borderBottomLeftRadius: "12px",
             }}
           />
         </div>

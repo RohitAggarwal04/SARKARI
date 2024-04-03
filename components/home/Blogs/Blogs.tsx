@@ -27,7 +27,7 @@ export default function Blogs({ blogs }) {
               <Link
                 href={item.url}
                 className={styles.tileCard}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", height: "419px" }}
                 key={item.id}
               >
                 <Image

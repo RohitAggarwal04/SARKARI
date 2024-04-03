@@ -71,35 +71,48 @@ function FooterComponent({ category }) {
             </section>
           </div>
           <div className={styles.sectionLinkSer}>
-            <div style={{ listStyle: "none", width: "10rem" }}>
+            <div
+              style={{
+                listStyle: "none",
+                width: "10rem",
+                alignSelf: "flex-start",
+              }}
+            >
               <div>
                 <h4 style={{ fontFamily: "FuturaMdBt" }}>Quick Links</h4>
               </div>
-              <div>
-                <p>Home</p>
-                <p>About Us</p>
-                <p>Services</p>
-                <p>Blogs</p>
-                <p>Contact Us</p>
+              <div className={styles.link}>
+                <Link href="/">Home</Link>
+                <Link href="/about-us">About Us</Link>
+                <Link href="services/12">Services</Link>
+
+                <Link href="tel:+917892126783">Contact Us</Link>
               </div>
             </div>
             <div style={{ listStyle: "none" }}>
               <div>
                 <h4 style={{ fontFamily: "FuturaMdBt" }}>Services</h4>
               </div>
-              <div>
+              <div className={styles.link}>
                 {category?.result?.map((item) => (
-                  <p key={item.id}>{item.display_name}</p>
+                  <Link href={`/services/${item.id}`} key={item.id}>
+                    {item.display_name}
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
-          <div style={{ listStyle: "none" }}>
+          <div style={{ listStyle: "none" }} className={styles.getInTouch}>
             <div>
               <h4 style={{ fontFamily: "FuturaMdBt" }}>Get In Touch</h4>
             </div>
             <div>
-              <p>Contact Us</p>
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                href="tel:+917892126783"
+              >
+                Contact Us
+              </Link>
               <div
                 style={{
                   display: "flex",
@@ -111,22 +124,29 @@ function FooterComponent({ category }) {
                 <Link
                   target="_blank"
                   href="https://www.facebook.com/Sarkarifiling"
+                  style={{ color: "white" }}
                 >
                   <FacebookFilled />
                 </Link>
                 <Link
                   target="_blank"
                   href="https://www.instagram.com/sarkarifiling_2024/"
+                  style={{ color: "white" }}
                 >
                   <InstagramFilled />
                 </Link>
                 <Link
                   target="_blank"
                   href="https://www.youtube.com/@SarkariFiling-2024"
+                  style={{ color: "white" }}
                 >
                   <YoutubeFilled />
                 </Link>
-                <Link target="_blank" href="www.linkedin.com/in/sarkari-filing">
+                <Link
+                  target="_blank"
+                  href="www.linkedin.com/in/sarkari-filing"
+                  style={{ color: "white" }}
+                >
                   <LinkedinFilled />
                 </Link>
               </div>

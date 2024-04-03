@@ -4,12 +4,13 @@
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
 }
 
 .formSection {
   width: 100%;
   border: 1px solid rgba(163, 163, 163, 1);
-  border-top-right-radius: 4rem;
+  border-radius: 20px 72px 20px 20px;
   padding: 2rem;
   background-color: white;
 }
@@ -35,9 +36,11 @@
   color: black;
   box-sizing: border-box;
   border: 1px solid rgba(163, 163, 163, 1);
+  margin-top: 10px;
 }
 .input::placeholder {
-  color: black;
+  color: #a6a6a6;
+  font-family: "FuturaBkBt", sans-serif;
 }
 
 .formSection form textarea {
@@ -47,6 +50,7 @@
 
 .formSection form label {
   display: block;
+  font-family: "FuturaMdBt", sans-serif;
 }
 
 .contactBtnSubmit {
@@ -55,8 +59,10 @@
   color: white;
   border: none;
   border-radius: 1rem;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: "FuturaMdBt", sans-serif;
+  line-height: 28px;
 }
 
 .contactInfoMain {
@@ -76,6 +82,7 @@
 }
 .heading {
   color: #1b1919;
+  font-weight: 700;
   font-size: 24px;
   font-family: "FuturaMdBt", sans-serif;
 }
@@ -87,26 +94,20 @@
 @media (min-width: 768px) {
   .contactUsSection {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-direction: row;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 20%,
-      rgba(243, 243, 243, 1) 20%,
-      rgba(243, 243, 243, 1) 100%
-    );
-    width: 100%;
-    padding-bottom: 2rem;
+
+    padding: 1rem 10% 4rem 9.5%;
+    gap: 4%;
+    margin-top: 10rem;
   }
 
   .contactInfoMain {
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
-    margin-top: 6em;
-    width: 35rem;
+    width: 40rem;
     padding: 1rem;
+    padding-left: 0;
   }
 
   .formSection {
@@ -116,5 +117,7 @@
     border-top-right-radius: 4rem;
     padding: 2rem;
     background-color: white;
+    position: relative;
+    margin-top: -5rem;
   }
 }

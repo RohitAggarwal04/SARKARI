@@ -10,26 +10,33 @@
 .bloglogoHeading {
   text-align: center;
 }
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "FuturaMdBt", sans-serif;
+}
 .cardContent {
   padding: 0 10px; /* Padding of 10px horizontally and 0 vertically */
   color: black;
   text-decoration: none;
 }
 .title {
-  height: 50px;
+  height: 25px;
   color: black;
   font-weight: 600;
   font-size: 16px;
   overflow: hidden;
   font-family: "Raleway", sans-serif;
   line-height: 1.5;
+  margin-bottom: 0;
 }
 .description {
-  height: 100px; /* Set the desired height */
+  height: 50px; /* Set the desired height */
   overflow: hidden;
   line-height: 1.5; /* Adjust the line height as needed */
   color: #525252;
   letter-spacing: 0.25px;
+  margin-top: 0;
 }
 
 .blogLogoImagesTestimonial {
@@ -61,7 +68,7 @@
 
 .tileCard img {
   width: 100%;
-  height: 250px;
+  height: 247px;
   border-top-right-radius: 3rem;
   object-fit: cover;
 }
@@ -69,6 +76,8 @@
 @media (min-width: 968px) {
   .blogLogos {
     display: block;
+    margin-top: 5rem;
+    margin-left: -1%;
   }
 
   .blogLogoImagesTestimonial {

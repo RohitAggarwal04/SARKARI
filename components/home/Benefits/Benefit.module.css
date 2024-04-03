@@ -16,10 +16,10 @@
 
 .benefitsTiles {
   margin-top: 3rem;
-  border-top-right-radius: 2rem;
+  border-radius: 0 32px 24px 0;
   padding: 2rem 1rem;
-  border: 1px solid rgba(32, 84, 164, 1);
-  width: 10rem;
+  border: 1px solid #2054a4;
+  width: 258px;
 }
 
 .heading {
@@ -50,7 +50,7 @@
 
   .headingSection {
     margin-top: 0rem;
-    margin-left: 12rem;
+    margin-left: 8rem;
     display: block;
     flex-wrap: wrap;
     flex-direction: column;

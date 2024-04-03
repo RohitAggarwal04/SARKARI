@@ -1,21 +1,12 @@
-.blueDesign {
-  margin: 0;
-  background-color: rgba(33, 150, 243, 0.2);
-  width: 4rem;
-  height: 8rem;
-}
-
 .contentSection {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
-.Description {
-  line-height: 1.5;
-  color: #595959;
-}
+
 .tileDescription {
   font-family: "FuturaMdBt", sans-serif;
+  font-size: 14px;
 }
 .servicesHeading {
   font-family: "FuturaMdBt", sans-serif;
@@ -26,10 +17,14 @@
   font-size: 24px;
   color: #3f3f46;
   margin-top: 0;
+  margin-left: 3%;
 }
 .serviceDescription {
   color: #3f3f46;
+  line-height: 24px;
+  letter-spacing: 0.5px;
 }
+
 .subheading {
   font-size: 20px;
   margin: 0;
@@ -41,23 +36,10 @@
   font-weight: bold;
   font-family: "FuturaMdBt", sans-serif;
 }
-.image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
 
-.servicesPeoplesimg {
-  margin-top: -3rem;
-  align-self: end;
-}
 .ServicesContent {
   color: black;
-  padding: 2rem 0.9rem;
-}
-
-.imageStyle {
-  width: 20rem;
+  padding: 2rem 0.4rem;
 }
 
 .sectionOurServices {
@@ -68,11 +50,12 @@
 
 .colorStyle {
   background-color: rgba(33, 150, 243, 0.2);
-  height: 4rem;
+  height: 80px;
+  width: 100%;
 }
 
 .ourServicesContent {
-  padding: 2rem 2% 1rem 2rem;
+  padding: 0rem 2% 1rem 3%;
   background-color: rgba(33, 150, 243, 0.2);
 }
 
@@ -84,11 +67,12 @@
 }
 
 .startUpTile {
-  background-color: white;
   padding: 2rem 0rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: fit-content;
+  margin-left: -2%;
 }
 
 .tile {
@@ -99,7 +83,9 @@
   color: #fff;
   font-weight: 600;
   background: rgba(121, 153, 234, 1);
-  border-top-right-radius: 3rem;
+  border-radius: 1.73px 78px 1.73px 1.73px;
+  height: 165px;
+  cursor: pointer;
 }
 .tileHovered {
   background-color: #ffd234;
@@ -121,7 +107,22 @@
   display: block;
   color: #1b1919;
 }
+.Image {
+  width: 80%;
+  height: 300px;
+  position: relative;
+  align-self: flex-end;
+  min-width: 350px;
+}
 @media (min-width: 768px) {
+  .blueDesign {
+    margin: 0;
+    background-color: rgba(33, 150, 243, 0.2);
+    width: 99px;
+    height: 208px;
+    position: absolute;
+  }
+
   .contentSection {
     display: flex;
     justify-content: space-between;
@@ -130,25 +131,27 @@
   }
 
   .servicesPeoplesimg {
-    width: 25rem;
-    max-height: 290px;
     margin: 0;
+    align-self: center;
   }
 
   .ServicesContent {
-    padding: 2rem 0rem 2rem 4rem;
+    padding: 2rem 0rem 2rem 9.5%;
     max-width: 40rem;
   }
 
-  .imageStyle {
-    width: 540px;
+  .Image {
+    width: 544px;
+    height: 390px;
+    align-self: center;
   }
 
   .ourServicesContent {
     width: 50%;
-    background-color: rgba(33, 150, 243, 0.2);
+    background-color: #d3e3ed;
     height: fit-content;
     margin-top: 4rem;
+    margin-left: -3.3%;
   }
 
   .sectionOurServices {
