@@ -9,6 +9,7 @@ import {
   RightCircleFilled,
   YoutubeFilled,
 } from "@ant-design/icons";
+import Link from "next/link";
 
 function FooterComponent({ category }) {
   const [email, setEmail] = useState("");
@@ -107,18 +108,27 @@ function FooterComponent({ category }) {
                   marginTop: "1rem",
                 }}
               >
-                <p>
+                <Link
+                  target="_blank"
+                  href="https://www.facebook.com/Sarkarifiling"
+                >
                   <FacebookFilled />
-                </p>
-                <p>
+                </Link>
+                <Link
+                  target="_blank"
+                  href="https://www.instagram.com/sarkarifiling_2024/"
+                >
                   <InstagramFilled />
-                </p>
-                <p>
+                </Link>
+                <Link
+                  target="_blank"
+                  href="https://www.youtube.com/@SarkariFiling-2024"
+                >
                   <YoutubeFilled />
-                </p>
-                <p>
+                </Link>
+                <Link target="_blank" href="www.linkedin.com/in/sarkari-filing">
                   <LinkedinFilled />
-                </p>
+                </Link>
               </div>
             </div>
           </div>
