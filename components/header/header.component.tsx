@@ -105,7 +105,7 @@ export default function Header({ category }) {
                     border: "2px solid #2196f3",
                   }}
                 >
-                  {menus.props.items.map((item, index) => (
+                  {items.map((item, index) => (
                     <div
                       onClick={() => setServiceIndex(index)}
                       className={styles.Dropdown}
