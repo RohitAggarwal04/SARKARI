@@ -46,7 +46,7 @@ export default function Header({ category }) {
   const fetchSubCategories = async (categoryId) => {
     try {
       const response = await fetch(
-        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
+        `https://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
