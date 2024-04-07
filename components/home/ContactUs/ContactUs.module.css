@@ -1,6 +1,6 @@
 .contactUsSection {
   background: rgba(243, 243, 243, 1);
-  width: 90%;
+  width: 100%;
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
@@ -66,10 +66,6 @@
 }
 
 .contactInfoMain {
-  display: flex;
-  justify-content: flex-start;
-  width: 25rem;
-  flex-direction: column;
   padding: 1rem;
 }
 
@@ -93,18 +89,15 @@
 
 @media (min-width: 768px) {
   .contactUsSection {
-    display: flex;
     justify-content: flex-start;
     flex-direction: row;
-
+    width: 100%;
     padding: 1rem 10% 4rem 9.5%;
     gap: 4%;
     margin-top: 10rem;
   }
 
   .contactInfoMain {
-    display: flex;
-    flex-direction: column;
     width: 40rem;
     padding: 1rem;
     padding-left: 0;

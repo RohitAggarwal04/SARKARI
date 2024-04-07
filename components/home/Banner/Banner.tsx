@@ -34,6 +34,8 @@ const BannerItem = ({
               cardNum === 2
                 ? "rgba(240, 195, 60, 0.60)"
                 : "rgba(255, 255, 255, 0.7)",
+            padding:
+              cardNum === 2 ? "30px 60px 50px 20px" : "30px 20px 50px  60px ",
           }}
         >
           {" "}
@@ -84,7 +86,6 @@ export default function Banner({ category, banner }) {
     height: "7px",
     background: "#3F3F46",
     borderRadius: "2px",
-    margin: "0",
   };
 
   const customActiveDotStyle = {
@@ -106,7 +107,7 @@ export default function Banner({ category, banner }) {
       afterChange={(index) => setCurrentSlide(index)}
     >
       {slides.map((i, index) => (
-        <div key={currentIndex}>
+        <div key={currentIndex} style={{ display: "flex" }}>
           <BannerItem
             bannerIndex={slides[index]}
             className={styles.imageCard1}

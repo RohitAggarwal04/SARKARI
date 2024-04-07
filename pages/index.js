@@ -35,7 +35,9 @@ export default function Home({ testimonials, blogs, category, banner }) {
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-VLK6BRCXF2"
-        ></Script>
+        >
+          {" "}
+        </Script>
       </Head>{" "}
       <Banner banner={banner} category={category} />
       <Header category={category} />

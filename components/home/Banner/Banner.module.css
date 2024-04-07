@@ -16,11 +16,10 @@
   bottom: 0;
   right: 0;
   text-align: right;
-  padding: 1rem;
   z-index: 999;
-  padding: 30px 25px 50px;
-
+  padding: 30px 60px 50px 20px;
   backdrop-filter: blur(10px);
+  height: 8rem;
 }
 
 .cardSection2 {
@@ -49,11 +48,12 @@
 @media (min-width: 768px) {
   .imageCard {
     display: inline-block;
-    width: 49.5%;
+    width: calc(50% - 3px);
+    margin-left: 3px;
   }
   .imageCard1 {
     display: inline-block;
-    width: 50%;
-    margin-right: 0.5%;
+    width: calc(50% - 3px);
+    margin-right: 3px;
   }
 }

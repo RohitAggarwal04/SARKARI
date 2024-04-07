@@ -1,7 +1,6 @@
 .footer {
   background: linear-gradient(to bottom, #2175a4, #2054a4);
 
-  width: 100%;
   color: white;
 }
 .link a {
@@ -80,7 +79,6 @@
   }
 
   .subFooter {
-    width: 100%;
     color: #fff;
     font-size: 20px;
   }
@@ -94,7 +92,6 @@
   }
 
   .sectionLinkSer {
-    width: 100%;
     display: flex;
     align-items: flex-start;
   }

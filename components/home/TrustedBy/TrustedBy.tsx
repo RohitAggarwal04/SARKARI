@@ -10,27 +10,74 @@ import Qoutemark from "../../../public/assets/Quote-mark.svg";
 import styles from "./trustedBy.module.css";
 import user from "../../../public/assets/trustedBy/Rectangle-70.png";
 
+const CustomDots = ({ currentSlide, goToSlide }) => {
+  return (
+    <div style={{ display: "flex", gap: "25px", marginLeft: "150px" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background:
+            currentSlide === 0 || currentSlide === 4 || currentSlide === 8
+              ? "#2196f3"
+              : "#a6a6a6",
+          marginTop: "5rem",
+        }}
+        onClick={() => {
+          currentSlide >= 4 ? goToSlide(4) : goToSlide(0);
+        }}
+      ></div>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background:
+            currentSlide === 1 || currentSlide === 5 || currentSlide === 9
+              ? "#2196f3"
+              : "#a6a6a6",
+          marginTop: "5rem",
+        }}
+        onClick={() => {
+          currentSlide >= 4 ? goToSlide(5) : goToSlide(1);
+        }}
+      ></div>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background:
+            currentSlide === 2 || currentSlide === 6 ? "#2196f3" : "#a6a6a6",
+          marginTop: "5rem",
+        }}
+        onClick={() => {
+          currentSlide >= 4 ? goToSlide(6) : goToSlide(2);
+        }}
+      ></div>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background:
+            currentSlide === 3 || currentSlide === 7 ? "#2196f3" : "#a6a6a6",
+          marginTop: "5rem",
+        }}
+        onClick={() => {
+          currentSlide >= 4 ? goToSlide(7) : goToSlide(3);
+        }}
+      ></div>
+    </div>
+  );
+};
+
 export default function TrustedBy({ testimonials }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const customDotStyle = {
-    width: "10px",
-    height: "10px",
-    background: "#a6a6a6",
-    marginTop: "5rem",
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+
+    carouselRef.goTo(index);
   };
-
-  const customActiveDotStyle = {
-    ...customDotStyle,
-    background: "#2196f3",
-  };
-
-  const customPaging = (i) => (
-    <button
-      style={i === currentSlide ? customActiveDotStyle : customDotStyle}
-      onClick={() => setCurrentSlide(i)}
-    />
-  );
-
+  let carouselRef;
   return (
     <>
       <section className={styles.logos}>
@@ -89,12 +136,14 @@ export default function TrustedBy({ testimonials }) {
         <div className={styles.CardProfileContainer}>
           <div className={styles.CardProfile}>
             <Carousel
-              pauseOnDotsHover={true}
               autoplay={true}
               swipeToSlide={true}
               draggable
-              customPaging={customPaging}
-              afterChange={(index) => setCurrentSlide(index)}
+              afterChange={(index) => {
+                setCurrentSlide(index);
+              }}
+              infinite
+              ref={(ref) => (carouselRef = ref)}
             >
               {testimonials?.result?.map((item, index) => (
                 <div
@@ -141,6 +190,7 @@ export default function TrustedBy({ testimonials }) {
                 </div>
               ))}
             </Carousel>{" "}
+            <CustomDots currentSlide={currentSlide} goToSlide={goToSlide} />
           </div>
         </div>
       </section>
