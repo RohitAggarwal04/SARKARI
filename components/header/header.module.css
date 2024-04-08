@@ -4,7 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
-  background: rgba(0, 0, 0, 0.4);
+  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +12,6 @@
   color: white;
   padding-left: 10%;
   padding-right: 10%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .whiteBackground {
   background: white !important;
@@ -99,7 +98,21 @@
   white-space: nowrap;
   font-size: 14px;
 }
+.MobilecontactUsBtn {
+  display: none;
+}
 @media (max-width: 768px) {
+  .MobilecontactUsBtn {
+    background: #2196f3;
+    border-radius: 3rem;
+    padding: 5px 24px;
+    fontfamily: "FuturaBKBt,sans-serif";
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 14px;
+    display: flex;
+    width: fit-content;
+  }
   .menuSection {
     display: none;
   }

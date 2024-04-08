@@ -33,7 +33,7 @@ export default function Header(props) {
         mainHeader.style.background = "white";
         setHasScrolled(true);
       } else {
-        mainHeader.style.background = "rgba(0, 0, 0, 0.5)";
+        mainHeader.style.background = "transparent";
         setHasScrolled(false);
       }
     };
@@ -232,7 +232,11 @@ export default function Header(props) {
                   items={items}
                 />
               )}
-              <Link href="tel:+917892126783" className={styles.contactUsBtn}>
+              <Link
+                href="tel:+917892126783"
+                className={styles.MobilecontactUsBtn}
+                style={{ color: "white" }}
+              >
                 Contact Us
               </Link>
             </div>

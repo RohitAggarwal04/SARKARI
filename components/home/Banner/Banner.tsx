@@ -28,14 +28,14 @@ const BannerItem = ({
 
       <div className={styles.imageSection}>
         <div
-          className={subClassName}
+          className={`${subClassName} ${
+            cardNum === 2 ? styles.paddingCard2 : styles.paddingCard1
+          } `}
           style={{
             backgroundColor:
               cardNum === 2
                 ? "rgba(240, 195, 60, 0.60)"
                 : "rgba(255, 255, 255, 0.7)",
-            padding:
-              cardNum === 2 ? "30px 60px 50px 20px" : "30px 20px 50px  60px ",
           }}
         >
           {" "}
@@ -61,7 +61,14 @@ const BannerItem = ({
             )}
           </div>
           <p className={styles.cardDescription}>{description}</p>
-          <a href={`/services/${id}`} className={styles.learnMoreLink}>
+          <a
+            href={`/services/${id}`}
+            className={styles.learnMoreLink}
+            style={{
+              right: cardNum === 1 ? "20px" : "",
+              left: cardNum === 2 ? "20px" : "",
+            }}
+          >
             Learn more
           </a>
         </div>
@@ -99,37 +106,51 @@ export default function Banner({ category, banner }) {
     />
   );
   return (
-    <Carousel
-      customPaging={customPaging}
-      autoplay
-      autoplaySpeed={5000}
-      infinite
-      afterChange={(index) => setCurrentSlide(index)}
-    >
-      {slides.map((i, index) => (
-        <div key={currentIndex} style={{ display: "flex" }}>
-          <BannerItem
-            bannerIndex={slides[index]}
-            className={styles.imageCard1}
-            subClassName={styles.cardSection}
-            cardNum={1}
-            description={banner.result[i].description}
-            title={banner.result[i].title}
-            imgUrl={banner.result[i].url}
-            id={category.result[i].id}
-          />
-          <BannerItem
-            bannerIndex={slides[index] + 1}
-            className={styles.imageCard}
-            subClassName={styles.cardSection2}
-            cardNum={2}
-            description={banner.result[i + 1].description}
-            title={banner.result[i + 1].title}
-            imgUrl={banner.result[i + 1].url}
-            id={category.result[i + 1].id}
-          />
-        </div>
-      ))}
-    </Carousel>
+    <div style={{ position: "relative" }}>
+      <Carousel
+        customPaging={customPaging}
+        autoplay
+        autoplaySpeed={5000}
+        infinite
+        afterChange={(index) => setCurrentSlide(index)}
+      >
+        {slides.map((i, index) => (
+          <div key={currentIndex} style={{ display: "flex" }}>
+            <BannerItem
+              bannerIndex={slides[index]}
+              className={styles.imageCard1}
+              subClassName={styles.cardSection}
+              cardNum={1}
+              description={banner.result[i].description}
+              title={banner.result[i].title}
+              imgUrl={banner.result[i].url}
+              id={category.result[i].id}
+            />
+            <BannerItem
+              bannerIndex={slides[index] + 1}
+              className={styles.imageCard}
+              subClassName={styles.cardSection2}
+              cardNum={2}
+              description={banner.result[i + 1].description}
+              title={banner.result[i + 1].title}
+              imgUrl={banner.result[i + 1].url}
+              id={category.result[i + 1].id}
+            />
+          </div>
+        ))}
+      </Carousel>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(180deg, #000000 -4.88%, rgba(0, 0, 0, 0) 20.69%)",
+          zIndex: "9999",
+        }}
+      />
+    </div>
   );
 }

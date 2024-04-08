@@ -12,7 +12,7 @@ import user from "../../../public/assets/trustedBy/Rectangle-70.png";
 
 const CustomDots = ({ currentSlide, goToSlide }) => {
   return (
-    <div style={{ display: "flex", gap: "25px", marginLeft: "150px" }}>
+    <div style={{ display: "flex", gap: "25px", marginLeft: "40%" }}>
       <div
         style={{
           width: "10px",
@@ -150,7 +150,6 @@ export default function TrustedBy({ testimonials }) {
                   key={index}
                   style={{
                     position: "relative",
-                    width: "20rem",
                   }}
                   className="CardProfile"
                 >
