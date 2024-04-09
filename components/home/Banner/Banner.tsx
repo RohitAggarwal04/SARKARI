@@ -36,6 +36,7 @@ const BannerItem = ({
               cardNum === 2
                 ? "rgba(240, 195, 60, 0.60)"
                 : "rgba(255, 255, 255, 0.7)",
+            zIndex: "999",
           }}
         >
           {" "}
@@ -107,6 +108,8 @@ export default function Banner({ category, banner }) {
   );
   return (
     <div style={{ position: "relative" }}>
+      {" "}
+      <div className={styles.absolutegradient} />
       <Carousel
         customPaging={customPaging}
         autoplay
@@ -139,18 +142,6 @@ export default function Banner({ category, banner }) {
           </div>
         ))}
       </Carousel>
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background:
-            "linear-gradient(180deg, #000000 -4.88%, rgba(0, 0, 0, 0) 20.69%)",
-          zIndex: "9999",
-        }}
-      />
     </div>
   );
 }

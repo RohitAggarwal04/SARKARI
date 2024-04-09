@@ -9,6 +9,8 @@ export default function ContactUs() {
     e.preventDefault();
 
     try {
+      setEmail("");
+      setMessage("");
       const response = await fetch(
         "https://www.sarkarifiling.com/api/lead/add",
         {

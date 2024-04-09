@@ -13,6 +13,24 @@ import FooterComponent from "../components/footer/footer.component";
 import Header from "../components/header/header.component";
 
 export default function Home({ testimonials, blogs, category, banner }) {
+  const fetchSubCategories = async (categoryId) => {
+    try {
+      const response = await fetch(
+        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const subCategories = await response.json();
+
+      return subCategories.result;
+    } catch (error) {
+      console.error("Error fetching sub-categories:", error);
+      return [];
+    }
+  };
   const metadata = {
     title: "Sarkari Filing",
     description:
@@ -44,7 +62,7 @@ export default function Home({ testimonials, blogs, category, banner }) {
         </Script>
       </Head>{" "}
       <Banner banner={banner} category={category} />
-      <Header category={category} />
+      <Header category={category} fetchSubCategories={fetchSubCategories} />
       <Services category={category} />
       <Proposal />
       <Benefits />

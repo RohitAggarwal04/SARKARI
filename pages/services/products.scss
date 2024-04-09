@@ -1,0 +1,42 @@
+.serviceBlock {
+    overflow-x: clip;
+    & .ant-tabs-nav {
+        position: sticky;
+        top: 82px;
+        z-index: 10;
+    }
+    & .ant-tabs-nav-wrap {
+        background-color: #3886f7;
+        overflow: visible !important;
+        & .ant-tabs-nav-list {
+            height: 40px;
+            overflow: visible !important;
+            & .ant-tabs-tab {
+                border-radius: 0px;
+                border: 0;
+                color: white;
+                min-width: 130px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-right: 1px solid white;
+            }
+        }
+    }
+    & .ant-tabs-tab-active {
+        border-radius: 8px !important;
+        height: 50px;
+        padding: 18px !important;
+        margin-top: -4px !important;
+        border: 0px !important;
+        & div.ant-tabs-tab-btn {
+            color: white !important;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .serviceBlock .ant-tabs-nav {
+        top: 110px;    
+    }
+}

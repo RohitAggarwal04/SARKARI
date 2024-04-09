@@ -5,18 +5,20 @@ import goodsAndST from "../../../public/assets/servicesImages/desk.svg";
 import trademakr from "../../../public/assets/servicesImages/trademark.svg";
 import illustration from "../../../public/assets/servicesImages/Illustration.svg";
 import projectReports from "../../../public/assets/servicesImages/picture.svg";
-import pAndFinancial from "../../../public/assets/servicesImages/desk.svg";
+
+import objects from "../../../public/assets/servicesImages/objects.svg";
 import styles from "./Services.module.css";
 import BoxDesign from "../BoxDesign/BoxDesign";
 import Image from "next/image";
+import Link from "next/link";
 
 const imageSources = [
   rocket,
   goodsAndST,
-  trademakr,
-  illustration,
   projectReports,
-  pAndFinancial,
+  illustration,
+  objects,
+  trademakr,
 ];
 
 export default function Services({ category }) {
@@ -27,6 +29,11 @@ export default function Services({ category }) {
     setSelectedTile(tile);
     setIsAnyTileHovered(true);
     clearTimeout(resetTimeout);
+  };
+  const handleMouseLeave = () => {
+    const resetTimeout = setTimeout(() => {
+      setSelectedTile(category.result[0]);
+    }, 2000); // Delay reset by 2 seconds (2000 milliseconds)
   };
   const boxStyle = {
     width: "16px",
@@ -105,7 +112,8 @@ export default function Services({ category }) {
         </div>
         <div className={styles.startUpTile}>
           {category.result.map((tile, index) => (
-            <div
+            <Link
+              href={`/services/${tile.id}`}
               key={index}
               className={`${styles.tile} ${
                 (!isAnyTileHovered && index === 0) ||
@@ -114,7 +122,8 @@ export default function Services({ category }) {
                   ? styles.tileHovered
                   : ""
               }`}
-              onClick={() => handleTileHover(tile)}
+              onMouseEnter={() => handleTileHover(tile)}
+              onMouseLeave={() => handleTileHover(category.result[0])}
             >
               <Image
                 width={155}
@@ -142,7 +151,7 @@ export default function Services({ category }) {
               >
                 {tile.display_name}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
         <div className={styles.colorStyle}></div>

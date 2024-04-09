@@ -11,11 +11,12 @@ import {
 } from "@ant-design/icons";
 import Link from "next/link";
 
-function FooterComponent({ category }) {
+function FooterComponent(props) {
+  const { category } = props;
   const [email, setEmail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setEmail("");
     try {
       const response = await fetch(
         "https://www.sarkarifiling.com/api/lead/add",
@@ -66,7 +67,10 @@ function FooterComponent({ category }) {
                     className={styles.footerInput}
                   />{" "}
                 </form>
-                <RightCircleFilled className={styles.footerIcon} />
+                <RightCircleFilled
+                  className={styles.footerIcon}
+                  onClick={handleSubmit}
+                />
               </div>
             </section>
           </div>
@@ -102,10 +106,9 @@ function FooterComponent({ category }) {
               </div>
             </div>
           </div>
-          <div style={{ listStyle: "none" }} className={styles.getInTouch}>
-            <div>
-              <h4 style={{ fontFamily: "FuturaMdBt" }}>Get In Touch</h4>
-            </div>
+          <div className={styles.getInTouch}>
+            <h4 style={{ fontFamily: "FuturaMdBt" }}>Get In Touch</h4>
+
             <div>
               <Link
                 style={{ color: "white", textDecoration: "none" }}
@@ -144,7 +147,7 @@ function FooterComponent({ category }) {
                 </Link>
                 <Link
                   target="_blank"
-                  href="www.linkedin.com/in/sarkari-filing"
+                  href="https://www.linkedin.com/in/sarkari-filing"
                   style={{ color: "white" }}
                 >
                   <LinkedinFilled />
@@ -158,8 +161,18 @@ function FooterComponent({ category }) {
             <p>© 2024 Sarkari Filing. Copyright and rights reserved</p>
           </div>
           <div style={{ display: "flex", gap: "100px" }}>
-            <p>Terms and Conditions</p>
-            <p>Privacy Policy</p>
+            <Link
+              href="/terms-and-conditions"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Terms and Conditions
+            </Link>
+            <Link
+              href="/privacy-policy"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </footer>

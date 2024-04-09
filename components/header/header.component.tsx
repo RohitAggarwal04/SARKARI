@@ -16,24 +16,37 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 
-export default function Header(props) {
-  const { category } = props;
+export default function Header({
+  category,
+  isAnotherpage,
+  fetchSubCategories,
+}) {
   const [items, setItems] = useState([]);
   const [openNavigation, setOpenNavigation] = useState(false);
   const [showServices, setShowServices] = useState(true);
   const [serviceIndex, setServiceIndex] = useState(0);
   const [hasScrolled, setHasScrolled] = useState(false);
   useEffect(() => {
+    if (openNavigation) {
+      document.body.classList.add("disable-scroll");
+    } else {
+      document.body.classList.remove("disable-scroll");
+    }
+
+    return () => {
+      document.body.classList.remove("disable-scroll");
+    };
+  }, [openNavigation]);
+  useEffect(() => {
     const handleScroll = () => {
       const mainHeader = document.querySelector(
         `.${styles.mainHeader}`
       ) as HTMLElement;
       if (openNavigation) mainHeader.style.background = "white";
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         mainHeader.style.background = "white";
         setHasScrolled(true);
       } else {
-        mainHeader.style.background = "transparent";
         setHasScrolled(false);
       }
     };
@@ -57,7 +70,14 @@ export default function Header(props) {
             children: subCategoriesArray[index].map(
               (subCategory, subIndex) => ({
                 key: `${index}-${subIndex}`,
-                label: subCategory.display_name,
+                label: (
+                  <Link
+                    href={`/services/${category.id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    {subCategory.display_name}{" "}
+                  </Link>
+                ),
               })
             ),
           }));
@@ -69,34 +89,15 @@ export default function Header(props) {
     }
   }, []);
 
-  const fetchSubCategories = async (categoryId) => {
-    try {
-      const response = await fetch(
-        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const subCategories = await response.json();
-
-      return subCategories.result;
-    } catch (error) {
-      console.error("Error fetching sub-categories:", error);
-      return [];
-    }
-  };
-
   return (
     <header
       className={styles.mainHeader}
       style={{
-        background: openNavigation ? "white" : "rgba(0, 0, 0, 0.1)",
+        background: openNavigation || hasScrolled ? "white" : "transparent",
         color: openNavigation ? "black" : "inherit",
       }}
     >
-      <section className={styles.logoSection}>
+      <Link href="/" className={styles.logoSection}>
         {" "}
         <Image
           width={40}
@@ -109,12 +110,15 @@ export default function Header(props) {
           style={{
             fontWeight: "500",
             fontSize: "18px",
-            color: hasScrolled || openNavigation ? "#2196F3" : "white",
+            color:
+              isAnotherpage || hasScrolled || openNavigation
+                ? "#2196F3"
+                : "white",
           }}
         >
           Sarkari Filing
         </p>{" "}
-      </section>
+      </Link>
       <section className={styles.menuSection}>
         <div className={styles.menuList}>
           <Link href="/">Home</Link>
@@ -156,16 +160,13 @@ export default function Header(props) {
                   ))}
                 </div>
 
-                <Link
-                  href={`/services/${category.result[serviceIndex].id} `}
-                  className={styles.Subcategories}
-                >
+                <div className={styles.Subcategories}>
                   {items[serviceIndex]?.children.map((item, index) => (
                     <p className={styles.Subcategory} key={index}>
                       {item.label}
                     </p>
                   ))}
-                </Link>
+                </div>
               </div>
             )}
           >
@@ -185,6 +186,7 @@ export default function Header(props) {
         <button
           className={styles.hamburgerBtn}
           onClick={() => setOpenNavigation(!openNavigation)}
+          style={{ color: hasScrolled || openNavigation ? "black" : "white" }}
         >
           {openNavigation ? <CloseOutlined /> : <MenuOutlined />}
           {openNavigation && (

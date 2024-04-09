@@ -1,3 +1,10 @@
+.absolutegradient {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(180deg, #000000 -4.88%, rgba(0, 0, 0, 0) 20.69%);
+  z-index: 10;
+}
 .bannerImage img {
   width: 100%;
 }
@@ -16,9 +23,8 @@
   bottom: 0;
   right: 0;
   text-align: right;
-  z-index: 999;
   backdrop-filter: blur(10px);
-  max-height: 8rem;
+  height: 114px;
 }
 .learnMoreLink {
   position: absolute;
@@ -49,12 +55,21 @@
   fontfamily: "FuturaBKBt,sans-serif";
 }
 .paddingCard1 {
-  padding: 30px 20px 50px 60px;
+  padding: 10px 20px 50px 60px;
 }
 .paddingCard2 {
-  padding: 30px 60px 50px 20px;
+  padding: 10px 60px 50px 20px;
 }
 @media (min-width: 768px) {
+  .paddingCard1 {
+    padding: 30px 20px 50px 60px;
+  }
+  .paddingCard2 {
+    padding: 30px 60px 50px 20px;
+  }
+  .absolutegradient {
+    height: 80%;
+  }
   .imageCard {
     display: inline-block;
     width: calc(50% - 3px);
@@ -68,7 +83,18 @@
   .cardSection,
   .cardSection2 {
     width: 22rem;
-
     height: 8rem;
+  }
+}
+@media (max-width: 768px) {
+  .cardTitle {
+    margin: 0;
+    font-size: 24px;
+  }
+  .cardDescription {
+    margin: 0;
+  }
+  .learnMoreLink {
+    margin-top: 0;
   }
 }

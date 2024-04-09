@@ -1,0 +1,9 @@
+.container {
+  min-height: calc(100vh - 85px);
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  color: black;
+  margin: 0;
+}

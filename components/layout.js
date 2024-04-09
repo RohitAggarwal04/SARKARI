@@ -7,7 +7,7 @@ export default function RootLayout({ className, children }) {
   return (
     <main className={`${className}  main`}>
       <Head>
-        <link rel="icon" href="/assets/logoIcon.png" />
+        <link rel="icon" href="/assets/logo1.png" />
         <meta name="viewport" content="width=1024" />
       </Head>{" "}
       <div className={` routeOutlet`}>{children}</div>

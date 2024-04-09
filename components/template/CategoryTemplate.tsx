@@ -79,7 +79,7 @@ const CategoryTemplate = (props: any) => {
                     </div>
                   )}
                   <div className={`${Styles.subCategory} ${textColor}`}>
-                    {item.image_identifier && (
+                    {/* {item.image_identifier && (
                       <Image
                         src={`${icon}`}
                         onError={({ currentTarget }) => {
@@ -91,7 +91,7 @@ const CategoryTemplate = (props: any) => {
                         height={80}
                         alt={item.display_name}
                       />
-                    )}
+                    )} */}
                     {item.display_name.toUpperCase()}
                   </div>
                 </Col>

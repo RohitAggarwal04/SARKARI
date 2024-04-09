@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import { Col, Row, Tabs } from "antd";
 import { useRouter } from "next/navigation";
 import SubCatContainer from "./SubCatContainer";
+import Header from "../../components/header/header.component";
+import FooterComponent from "../../components/footer/footer.component";
 
 export default function Services(props) {
   const { categoryData, subCategoryData, seoData, params } = props;
@@ -18,10 +22,10 @@ export default function Services(props) {
   }
 
   return (
-    <div className="blockHolder">
-      <Row>
-        <Col xs={24} md={1} lg={1} xl={1} xxl={24}></Col>
-        <Col xs={24} md={22} lg={22} xl={22} xxl={24}>
+    <>
+      <Header category={categoryData} isAnotherpage={true} />
+      <div style={{ marginTop: "4rem", paddingRight: "4rem" }}>
+        <div>
           {categoryData && (
             <div className="serviceBlock">
               <Tabs
@@ -35,7 +39,6 @@ export default function Services(props) {
                   return (
                     <TabPane tab={item.display_name} key={item.id}>
                       <Row>
-                        <Col xs={1} md={24}></Col>
                         <Col xs={22} md={24}>
                           {subCategoryData && (
                             <SubCatContainer
@@ -53,10 +56,10 @@ export default function Services(props) {
               </Tabs>
             </div>
           )}
-        </Col>
-        <Col xs={24} md={1} lg={1} xl={1} xxl={24}></Col>
-      </Row>
-    </div>
+        </div>
+      </div>
+      <FooterComponent category={categoryData} />
+    </>
   );
 }
 

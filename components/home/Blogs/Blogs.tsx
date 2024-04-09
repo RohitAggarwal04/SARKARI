@@ -29,6 +29,7 @@ export default function Blogs({ blogs }) {
                 className={styles.tileCard}
                 style={{ textDecoration: "none", height: "419px" }}
                 key={item.id}
+                target="_blank"
               >
                 <Image
                   width={100}

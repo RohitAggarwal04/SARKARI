@@ -86,6 +86,7 @@
   border-radius: 1.73px 78px 1.73px 1.73px;
   height: 165px;
   cursor: pointer;
+  text-decoration: none;
 }
 .tileHovered {
   background-color: #ffd234;

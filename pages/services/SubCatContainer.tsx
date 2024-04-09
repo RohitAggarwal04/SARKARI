@@ -16,9 +16,6 @@ const SubCatContainer = (props: any) => {
 
   return (
     <div>
-      <Head>
-        <title>Sarkari Filing - {categoryItem?.display_name}</title>
-      </Head>
       <CategoryTemplate
         title={categoryItem?.display_name}
         backgroundColor={`bg${categoryItem?.image_identifier}`}
@@ -27,6 +24,7 @@ const SubCatContainer = (props: any) => {
           <div className="border-div">
             <img
               src={`/assets/services/${categoryItem?.image_identifier}.jpg`}
+              layout="responsive"
               width={300}
               height={300}
               alt={categoryItem?.display_name}

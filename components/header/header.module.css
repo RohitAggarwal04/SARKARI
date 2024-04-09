@@ -58,6 +58,7 @@
   display: flex;
   align-items: center;
   margin-right: auto;
+  text-decoration: none;
 }
 .menuSection {
   flex: 1;
@@ -101,6 +102,9 @@
 .MobilecontactUsBtn {
   display: none;
 }
+.disable-scroll {
+  overflow: hidden;
+}
 @media (max-width: 768px) {
   .MobilecontactUsBtn {
     background: #2196f3;
@@ -133,6 +137,9 @@
     background-color: transparent;
     border: none;
     font-size: 24px;
+    color: white;
+    width: 23.33px;
+    height: 20.42px;
   }
   .contactUsBtn {
     display: none;

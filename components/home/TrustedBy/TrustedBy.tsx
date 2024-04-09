@@ -8,7 +8,7 @@ import shashilogo from "../../../public/assets/customer/4.svg";
 import Scgb from "../../../public/assets/customer/5.png";
 import Qoutemark from "../../../public/assets/Quote-mark.svg";
 import styles from "./trustedBy.module.css";
-import user from "../../../public/assets/trustedBy/Rectangle-70.png";
+import { BsPersonSquare } from "react-icons/bs";
 
 const CustomDots = ({ currentSlide, goToSlide }) => {
   return (
@@ -181,9 +181,12 @@ export default function TrustedBy({ testimonials }) {
                       display: "flex",
                       marginTop: "2.7rem",
                       gap: "10px",
+                      alignItems: "center",
                     }}
                   >
-                    <Image src={user} width={50} height={50} alt="user" />
+                    <BsPersonSquare
+                      style={{ color: "#2196F3", fontSize: "40px" }}
+                    />
                     <p className={styles.profileImgeSec}>~{item.owner}</p>
                   </div>
                 </div>

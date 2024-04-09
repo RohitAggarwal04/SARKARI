@@ -13,11 +13,6 @@
   color: #1b1919;
   font-family: "FuturaMdBt", sans-serif;
 }
-.logoImagesTestimonial {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 
 .profileImgeSec {
   font-size: 18px;
@@ -32,7 +27,7 @@
 .testimonialSec {
   width: 100%;
   gap: 5%;
-  background: linear-gradient(rgba(33, 117, 164, 1), rgba(32, 84, 164, 1));
+  background: linear-gradient(#2175a4, #2054a4);
   padding: 1rem 0rem;
 }
 .CardProfileContainer {
@@ -62,8 +57,8 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-
     align-items: center;
+    justify-content: space-between;
   }
 
   .testimonialSec {
@@ -96,5 +91,15 @@
 @media (min-width: 968px) {
   .CardProfile {
     margin-left: -300%;
+  }
+}
+@media (max-width: 768px) {
+  .logoImagesTestimonial {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+    gap: 20px;
+    align-items: center; /* Align items vertically */
+    width: 100%;
+    justify-items: center; /* Center items horizontally */
   }
 }
