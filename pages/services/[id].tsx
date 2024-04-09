@@ -8,6 +8,24 @@ import Header from "../../components/header/header.component";
 import FooterComponent from "../../components/footer/footer.component";
 
 export default function Services(props) {
+  const fetchSubCategories = async (categoryId) => {
+    try {
+      const response = await fetch(
+        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const subCategories = await response.json();
+
+      return subCategories.result;
+    } catch (error) {
+      console.error("Error fetching sub-categories:", error);
+      return [];
+    }
+  };
   const { categoryData, subCategoryData, seoData, params } = props;
   const { TabPane } = Tabs;
   const router = useRouter();
@@ -23,7 +41,11 @@ export default function Services(props) {
 
   return (
     <>
-      <Header category={categoryData} isAnotherpage={true} />
+      <Header
+        fetchSubCategories={fetchSubCategories}
+        category={categoryData}
+        isAnotherpage={true}
+      />
       <div style={{ marginTop: "4rem", paddingRight: "4rem" }}>
         <div>
           {categoryData && (
