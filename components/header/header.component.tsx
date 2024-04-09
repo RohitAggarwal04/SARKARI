@@ -16,11 +16,7 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 
-export default function Header({
-  category,
-  isAnotherpage,
-  fetchSubCategories,
-}) {
+export default function Header({ category, isAnotherpage }) {
   const [items, setItems] = useState([]);
   const [openNavigation, setOpenNavigation] = useState(false);
   const [showServices, setShowServices] = useState(true);
@@ -88,6 +84,25 @@ export default function Header({
         });
     }
   }, []);
+
+  const fetchSubCategories = async (categoryId) => {
+    try {
+      const response = await fetch(
+        `http://65.2.101.63:9000/api/sub_category?category_id=${categoryId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const subCategories = await response.json();
+
+      return subCategories.result;
+    } catch (error) {
+      console.error("Error fetching sub-categories:", error);
+      return [];
+    }
+  };
 
   return (
     <header

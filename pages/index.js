@@ -62,11 +62,7 @@ export default function Home({ testimonials, blogs, category, banner }) {
         </Script>
       </Head>{" "}
       <Banner banner={banner} category={category} />
-      <Header
-        category={category}
-        fetchSubCategories={fetchSubCategories}
-        isAnotherpage={false}
-      />
+      <Header category={category} isAnotherpage={false} />
       <Services category={category} />
       <Proposal />
       <Benefits />

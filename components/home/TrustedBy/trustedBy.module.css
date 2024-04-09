@@ -96,7 +96,7 @@
 @media (max-width: 768px) {
   .logoImagesTestimonial {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
     gap: 20px;
     align-items: center; /* Align items vertically */
     width: 100%;
