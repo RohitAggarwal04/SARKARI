@@ -24,7 +24,6 @@ const SubCatContainer = (props: any) => {
           <div className="border-div">
             <img
               src={`/assets/services/${categoryItem?.image_identifier}.jpg`}
-              layout="responsive"
               width={300}
               height={300}
               alt={categoryItem?.display_name}
