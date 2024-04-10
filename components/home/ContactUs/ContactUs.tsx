@@ -34,7 +34,7 @@ export default function ContactUs() {
   };
 
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <section id="contact-us" className={styles.contactUsSection}>
         <div className={styles.formSection}>
           <h3 className={styles.heading}>Get In Touch With Us</h3>
@@ -97,6 +97,6 @@ export default function ContactUs() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }

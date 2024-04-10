@@ -20,8 +20,9 @@
 }
 
 .clientTesti {
-  width: 100%;
+  width: 95%;
   color: white;
+  padding: 0 1rem;
 }
 
 .testimonialSec {
@@ -45,8 +46,21 @@
   cursor: pointer;
   user-select: none;
 }
-
-@media (min-width: 768px) {
+.hideOnMobile {
+  display: none;
+}
+.hideOnDesktop {
+  display: flex;
+  margin-left: 30%;
+}
+@media (min-width: 1025px) {
+  .hideOnMobile {
+    display: flex;
+    margin-left: 40%;
+  }
+  .hideOnDesktop {
+    display: none;
+  }
   .contentListTestmonial {
     display: flex;
     align-items: center;
@@ -58,7 +72,7 @@
     flex-wrap: wrap;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .testimonialSec {
@@ -67,7 +81,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    padding: 5em 0rem;
+    padding: 5em 1rem;
     background: linear-gradient(
       to right,
       rgba(33, 117, 164, 1) 50%,
@@ -77,23 +91,19 @@
 
   .clientTesti {
     width: 30%;
-    margin-left: -5rem;
+    margin-left: -10rem;
   }
 
   .CardProfile {
     border-top-right-radius: 3rem;
     padding: 2rem 3rem;
-    margin-left: min(calc(100% - 22rem), 22rem);
     width: 25rem;
     height: 12rem;
+    margin-left: -270%;
   }
 }
-@media (min-width: 968px) {
-  .CardProfile {
-    margin-left: -300%;
-  }
-}
-@media (max-width: 768px) {
+
+@media (max-width: 1024px) {
   .logoImagesTestimonial {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
@@ -101,5 +111,25 @@
     align-items: center; /* Align items vertically */
     width: 100%;
     justify-items: center; /* Center items horizontally */
+  }
+  .CardProfile {
+    margin-left: 1.2rem;
+  }
+  .testimonialSec {
+    height: 200px;
+    margin-bottom: 30rem;
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .CardProfile {
+    width: 30rem;
+    transform: translateX(14%);
+  }
+  .hideOnDesktop {
+    transform: translateX(5%);
+  }
+  .testimonialSec {
+    height: 200px;
+    margin-bottom: 20rem;
   }
 }

@@ -10,9 +10,9 @@ import Qoutemark from "../../../public/assets/Quote-mark.svg";
 import styles from "./trustedBy.module.css";
 import { BsPersonSquare } from "react-icons/bs";
 
-const CustomDots = ({ currentSlide, goToSlide }) => {
+const CustomDots = ({ currentSlide, goToSlide, hide }) => {
   return (
-    <div style={{ display: "flex", gap: "25px", marginLeft: "40%" }}>
+    <div style={{ gap: "25px" }} className={hide}>
       <div
         style={{
           width: "10px",
@@ -142,6 +142,7 @@ export default function TrustedBy({ testimonials }) {
               afterChange={(index) => {
                 setCurrentSlide(index);
               }}
+              dots={false}
               infinite
               ref={(ref) => (carouselRef = ref)}
             >
@@ -192,9 +193,18 @@ export default function TrustedBy({ testimonials }) {
                 </div>
               ))}
             </Carousel>{" "}
-            <CustomDots currentSlide={currentSlide} goToSlide={goToSlide} />
+            <CustomDots
+              currentSlide={currentSlide}
+              goToSlide={goToSlide}
+              hide={styles.hideOnMobile}
+            />
           </div>
-        </div>
+        </div>{" "}
+        <CustomDots
+          currentSlide={currentSlide}
+          goToSlide={goToSlide}
+          hide={styles.hideOnDesktop}
+        />
       </section>
     </>
   );
